@@ -3,6 +3,9 @@
   "private": true,
   "dependencies": {
     "@babel/preset-react": "^7.14.5",
+    "@inertiajs/inertia": "^0.10.1",
+    "@inertiajs/inertia-react": "^0.7.1",
+    "@inertiajs/progress": "^0.2.6",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
