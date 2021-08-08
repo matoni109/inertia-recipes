@@ -2,23 +2,22 @@
   "name": "inertia-recipes",
   "private": true,
   "dependencies": {
-    "@babel/preset-react": "^7.14.5",
-    "@inertiajs/inertia": "^0.10.1",
-    "@inertiajs/inertia-react": "^0.7.1",
-    "@inertiajs/progress": "^0.2.6",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
-    "@rails/webpacker": "5.4.0",
-    "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
-    "prop-types": "^15.7.2",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "webpack": "^4.46.0",
-    "webpack-cli": "^3.3.12"
+    "@rails/webpacker": "^6.0.0-beta.7",
+    "webpack": "^5.11.0",
+    "webpack-cli": "^4.2.0"
   },
   "version": "0.1.0",
   "devDependencies": {
+    "@webpack-cli/serve": "^1.5.1",
     "webpack-dev-server": "^3.11.2"
-  }
+  },
+  "babel": {
+    "presets": ["./node_modules/@rails/webpacker/package/babel/preset.js"]
+  },
+  "browserslist": [
+    "defaults"
+  ]
 }
