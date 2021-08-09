@@ -18,3 +18,11 @@ Rails 6.1.4
 
 ##### Inertial JS: 
 - http://localhost:3000/inertia-example
+
+
+##### References
+
+- https://andrewm.codes/blog/webpacker-6-upgrade-guide/
+- https://www.youtube.com/watch?v=03EjkPaCHEI
+- https://inertiajs.com
+- https://courses.jasoncharnes.com/
