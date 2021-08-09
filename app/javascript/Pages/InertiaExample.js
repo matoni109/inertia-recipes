@@ -1,6 +1,5 @@
 import React from "react";
-
-import MyToggle from "../Components/switch";
+import MyToggle from "../Components/MyToggle";
 
 const InertiaExample = ({ name }) => (
   <>
