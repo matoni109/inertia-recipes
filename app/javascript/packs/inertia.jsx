@@ -3,6 +3,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import axios from 'axios';
 import { InertiaProgress } from '@inertiajs/progress';
+import Layout from "../Components/Layout"
 
 document.addEventListener('DOMContentLoaded', () => {
   InertiaProgress.init();
@@ -14,7 +15,14 @@ document.addEventListener('DOMContentLoaded', () => {
   render(
     <App
       initialPage={JSON.parse(el.dataset.page)}
-      resolveComponent={name => require(`../Pages/${name}`).default}
+      // resolveComponent={name => require(`../Pages/${name}`).default}
+      resolveComponent={name => import(`../Pages/${name}`).then(({ default: page }) => {
+        if (page.layout === undefined) {
+          page.layout = Layout;
+
+        }
+        return page;
+      })}
     />,
     el
   )
