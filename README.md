@@ -2,6 +2,10 @@
 
 ### Startup Initial 
 
+Startup point for a RoR Inertia project, will update this as I get further along.
+I'm going to set this up to match Brandon Shars You Tube Tutorial, but with Tailwind UI Comp, and CSS
+- https://www.youtube.com/watch?v=03EjkPaCHEI
+
 Ruby 3.0.0
 Rails 6.1.4
 
