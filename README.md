@@ -1,24 +1,20 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Startup Initial 
 
-Things you may want to cover:
+Ruby 3.0.0
+Rails 6.1.4
 
-* Ruby version
+Webpack: 
 
-* System dependencies
+-Webpack 6.beta 7
+-Webpacker 6: CSS Loaders
+-Webpacker 6: PostCSS Loaders
+-Webpacker 6: SCSS/Sass Loaders
+-Webpacker 6: Tailwind CSS 2.0 Integration ( with JIT PURGE )
 
-* Configuration
+React 17:
+-headlessui/react
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Inertial JS: 
+- http://localhost:3000/inertia-example
