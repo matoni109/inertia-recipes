@@ -937,6 +937,11 @@
   resolved "https://registry.yarnpkg.com/@discoveryjs/json-ext/-/json-ext-0.5.3.tgz#90420f9f9c6d3987f176a19a7d8e764271a2f55d"
   integrity sha512-Fxt+AfXgjMoin2maPIYzFZnQjAXjAL0PHscM5pRTtatFqB+vZxAM9tLp2Optnuw3QOQC40jTNeGYFOMvyf7v9g==
 
+"@headlessui/react@^1.4.0":
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@headlessui/react/-/react-1.4.0.tgz#c6d424d8ab10ac925e4423d7f3cbab02c30d736a"
+  integrity sha512-C+FmBVF6YGvqcEI5fa2dfVbEaXr2RGR6Kw1E5HXIISIZEfsrH/yuCgsjWw5nlRF9vbCxmQ/EKs64GAdKeb8gCw==
+
 "@inertiajs/inertia-react@^0.7.1":
   version "0.7.1"
   resolved "https://registry.yarnpkg.com/@inertiajs/inertia-react/-/inertia-react-0.7.1.tgz#fc5e7356756b9ee129d72b80260d15937da210fc"
