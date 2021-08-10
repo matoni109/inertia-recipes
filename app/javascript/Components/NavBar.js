@@ -5,18 +5,18 @@ import { InertiaLink } from "@inertiajs/inertia-react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
 
-const navigation = [
-  { name: "Dashboard", href: "#", current: true },
-  { name: "Team", href: "#", current: false },
-  { name: "Projects", href: "#", current: false },
-  { name: "Calendar", href: "#", current: false },
-];
-
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function NavBar({ user }) {
+  const navigation = [
+    { name: `${user.name}' Recipes`, href: "/recipes", current: true },
+    { name: "Create Recipe", href: "/recipes/new", current: false },
+    // { name: "Projects", href: "#", current: false },
+    // { name: "Calendar", href: "#", current: false },
+  ];
+
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
@@ -50,7 +50,7 @@ export default function NavBar({ user }) {
                 <div className="hidden sm:block sm:ml-6">
                   <div className="flex space-x-4">
                     {navigation.map((item) => (
-                      <a
+                      <InertiaLink
                         key={item.name}
                         href={item.href}
                         className={classNames(
@@ -62,7 +62,7 @@ export default function NavBar({ user }) {
                         aria-current={item.current ? "page" : undefined}
                       >
                         {item.name}
-                      </a>
+                      </InertiaLink>
                     ))}
                   </div>
                 </div>
@@ -103,7 +103,7 @@ export default function NavBar({ user }) {
                         >
                           <Menu.Item>
                             {({ active }) => (
-                              <a
+                              <InertiaLink
                                 href="#"
                                 className={classNames(
                                   active ? "bg-gray-100" : "",
@@ -111,12 +111,12 @@ export default function NavBar({ user }) {
                                 )}
                               >
                                 {user.name}'s Profile
-                              </a>
+                              </InertiaLink>
                             )}
                           </Menu.Item>
                           <Menu.Item>
                             {({ active }) => (
-                              <a
+                              <InertiaLink
                                 href="#"
                                 className={classNames(
                                   active ? "bg-gray-100" : "",
@@ -124,12 +124,12 @@ export default function NavBar({ user }) {
                                 )}
                               >
                                 Settings
-                              </a>
+                              </InertiaLink>
                             )}
                           </Menu.Item>
                           <Menu.Item>
                             {({ active }) => (
-                              <a
+                              <InertiaLink
                                 href="#"
                                 className={classNames(
                                   active ? "bg-gray-100" : "",
@@ -137,7 +137,7 @@ export default function NavBar({ user }) {
                                 )}
                               >
                                 Sign out
-                              </a>
+                              </InertiaLink>
                             )}
                           </Menu.Item>
                         </Menu.Items>
@@ -152,7 +152,7 @@ export default function NavBar({ user }) {
           <Disclosure.Panel className="sm:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1">
               {navigation.map((item) => (
-                <a
+                <InertiaLink
                   key={item.name}
                   href={item.href}
                   className={classNames(
@@ -164,7 +164,7 @@ export default function NavBar({ user }) {
                   aria-current={item.current ? "page" : undefined}
                 >
                   {item.name}
-                </a>
+                </InertiaLink>
               ))}
             </div>
           </Disclosure.Panel>

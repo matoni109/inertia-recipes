@@ -13,6 +13,8 @@ const RecipeList = ({ user, recipes }) => (
     ))}
   </>
 );
+// <InertiaLink as="div" className="hover:underline" href={`/recipes/${recipe.id}`}>
+// you can change the layouts per page like below
 // RecipeList.layout = null;
 // or
 // RecipeList.layout = (page) => <Layout>{page}</Layout>;
