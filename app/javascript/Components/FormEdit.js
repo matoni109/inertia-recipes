@@ -1,7 +1,7 @@
 import { usePage } from "@inertiajs/inertia-react";
 import React, { useState } from "react";
 
-const MyForm = (props) => {
+const FormEdit = (props) => {
   const { errors } = usePage().props;
 
   // if (errors) {
@@ -22,8 +22,8 @@ const MyForm = (props) => {
   // };
 
   const [values, setValues] = useState({
-    name: "",
-    description: "",
+    name: props.editProps.name,
+    description: props.editProps.description,
   });
 
   const valuesChangedHandler = (event) => {
@@ -75,12 +75,12 @@ const MyForm = (props) => {
   return (
     <>
       <div>
-        <div className="md:grid md:grid-cols-3 md:gap-6">
+        <div className="md:grid md:grid-cols-3 md:gap-6 px-4">
           <div className="md:col-span-1">
             <div className="px-4 sm:px-0">
-              <h3 className="text-lg font-medium leading-6 text-gray-900">
+              <h2 className="h2 text-lg font-medium leading-6 text-gray-900">
                 Description
-              </h3>
+              </h2>
               <p className="mt-1 text-sm text-gray-600">
                 This information will be displayed publicly so be careful what
                 you share.
@@ -146,7 +146,7 @@ const MyForm = (props) => {
                     onClick={submitHandler}
                     className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                   >
-                    Create Recipe
+                    Edit Recipe
                   </button>
                 </div>
               </div>
@@ -157,4 +157,4 @@ const MyForm = (props) => {
     </>
   );
 };
-export default MyForm;
+export default FormEdit;

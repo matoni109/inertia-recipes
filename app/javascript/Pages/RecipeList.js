@@ -1,4 +1,6 @@
 import React from "react";
+//codepen.io/sturner/pen/rNyEjPp
+// https://daisyui.com/docs/install
 import { InertiaLink } from "@inertiajs/inertia-react";
 
 const RecipeList = ({ user, recipes }) => (
