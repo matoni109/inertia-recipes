@@ -14,7 +14,7 @@ const Recipe = ({ user, recipe }) => {
     <>
       <section className="text-indigo-200 body-font p-5 bg-gray-900">
         <div className="mx-auto flex px-5  md:flex-row flex-col items-center jobcard">
-          <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center">
+          <div className="mx-auto lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center">
             <figure className="visible">
               <div className="">
                 <div className="pt-10 px-2 sm:px-6">
@@ -27,7 +27,7 @@ const Recipe = ({ user, recipe }) => {
                   <p className="text-indigo-200 text-base pb-6">
                     {recipe.description}
                   </p>
-                  <p className="text-indigo-200 text-base pb-8">
+                  <p className="max-w-prose text-indigo-200 text-base pb-8">
                     We can't believe how far we have come in the last 6 months.
                     I really did not think this awesome career move would come
                     so quickly. Thanks to each of you put into SI and the
@@ -49,13 +49,16 @@ const Recipe = ({ user, recipe }) => {
                         </span>
                       </p>
                     </div>
-                    <div className="p-5 pb-12">
+                  </div>
+                  <div className="flex justify-end space-x-4 p-5 pb-12">
+                    <div>
                       <InertiaLink href={`/recipes/${recipe.id}/edit`}>
                         <button className="h-10 px-5 text-indigo-700 transition-colors duration-150 border border-indigo-500 rounded-lg focus:shadow-outline hover:bg-indigo-500 hover:text-indigo-100">
                           Edit
                         </button>
                       </InertiaLink>
-
+                    </div>
+                    <div>
                       <button
                         onClick={deleteHandler}
                         className="h-10 px-5 text-indigo-700 transition-colors duration-150 border border-indigo-500 rounded-lg focus:shadow-outline hover:bg-indigo-500 hover:text-indigo-100"

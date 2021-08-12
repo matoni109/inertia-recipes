@@ -20,7 +20,7 @@ const EditRecipe = ({ recipe }) => {
   console.log(recipe);
   return (
     <>
-      <h1>Create New Recipe</h1>
+      <h1>Edit Recipe</h1>
       <FormEdit onSaveRecipeData={saveRecipeHandler} editProps={recipe} />
     </>
   );
