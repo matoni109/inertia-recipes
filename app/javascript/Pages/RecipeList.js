@@ -14,6 +14,10 @@ const RecipeList = ({ user, recipes }) => (
         <li>Tailwind 2.0 CSS</li>
         <li>Basic C R U D for Recipes</li>
         <li>Uses recipescontroller.rb</li>
+        <li>
+          Tests with FactoryBot and RSpec in /spec run with{" "}
+          <span className="bg-gray-500 text-white"> rspec </span>
+        </li>
       </ul>
     </div>
 
