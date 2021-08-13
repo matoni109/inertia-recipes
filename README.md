@@ -16,6 +16,10 @@ To Run 2 x termi windows
 `rails s`
 `webpack-dev-server`
 
+
+##### Demo at
+- https://inertia-recipes.herokuapp.com/
+
 ##### Webpack:
 
 - Webpack 6.beta 7
