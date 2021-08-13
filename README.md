@@ -7,9 +7,9 @@ I'm going to set this up to match Brandon Shars You Tube Tutorial, but with Tail
 
 - https://www.youtube.com/watch?v=03EjkPaCHEI
 
-Ruby 3.0.0 .
-Rails 6.1.4 .
-Test with Rspec and FactoryBot run with `rspec` .
+Ruby 3.0.0\
+Rails 6.1.4\
+Test with Rspec and FactoryBot run with `rspec`\
 
 To Run 2 x termi windows
 
