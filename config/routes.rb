@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: 'inertia_example#index'
+  root to: 'recipes#index'
   get 'inertia-example', to: 'inertia_example#index'
   get 'pages/home'
   # root to: 'pages#home'
