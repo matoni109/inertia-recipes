@@ -2,7 +2,6 @@ import React from "react";
 //codepen.io/sturner/pen/rNyEjPp
 // https://daisyui.com/docs/install
 
-import Header from "../Components/Header";
 import Card from "../Components/Card";
 const RecipeList = ({ user, recipes }) => (
   <>

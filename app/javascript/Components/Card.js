@@ -2,6 +2,7 @@ import React from "react";
 import { InertiaLink } from "@inertiajs/inertia-react";
 
 const Card = (props) => {
+  console.log(props.props.name);
   return (
     <div>
       <div className="bg-white rounded-md overflow-hidden relative shadow-md">
@@ -13,7 +14,7 @@ const Card = (props) => {
           />
         </div>
         <div className="p-4">
-          <h2 className="text-2xl text-purple-400">{props.name}</h2>
+          <h2 className="text-2xl text-purple-400">{props.props.name}</h2>
           <div className="flex justify-between mt-4 mb-4 text-gray-500">
             <div className="flex items-center">
               <svg
@@ -60,10 +61,10 @@ const Card = (props) => {
               <span className="ml-1 lg:text-xl">1-2</span>
             </div>
           </div>
-          <p className="mb-4 text-gray-500">{props.description}</p>
+          <p className="mb-4 text-gray-500">{props.props.description}</p>
           <InertiaLink
             className="hover:underline"
-            href={`/recipes/${props.id}`}
+            href={`/recipes/${props.props.id}`}
           >
             <button className="text-white bg-purple-400 p-4 rounded-md w-full uppercase">
               View Recipe
