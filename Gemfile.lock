@@ -120,6 +120,7 @@ GEM
     nokogiri (1.12.2-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    pg (1.2.3)
     public_suffix (4.0.6)
     puma (5.4.0)
       nio4r (~> 2.0)
@@ -195,7 +196,6 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    sqlite3 (1.4.2)
     thor (1.1.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
@@ -235,13 +235,13 @@ DEPENDENCIES
   inertia_rails
   jbuilder (~> 2.7)
   listen (~> 3.3)
+  pg
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.4)
   rexml (~> 3.2, >= 3.2.4)
   rspec-rails (~> 5.0.0)
   selenium-webdriver
-  sqlite3 (~> 1.4)
   tzinfo-data
   web-console (>= 4.1.0)
   webdrivers
