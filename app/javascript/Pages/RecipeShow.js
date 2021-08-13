@@ -1,6 +1,7 @@
 import React from "react";
 import { InertiaLink } from "@inertiajs/inertia-react";
 import { Inertia } from "@inertiajs/inertia";
+import SearchFilter from "../Components/SearchFilters";
 const Recipe = ({ user, recipe }) => {
   const deleteHandler = () => {
     console.log(`/recipes/${recipe.id}`);
@@ -12,6 +13,7 @@ const Recipe = ({ user, recipe }) => {
   };
   return (
     <>
+      {/* <SearchFilter /> */}
       <section className="text-indigo-200 body-font p-5 bg-gray-900">
         <div className="mx-auto flex px-5  md:flex-row flex-col items-center jobcard">
           <div className="mx-auto lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center">
@@ -71,7 +73,7 @@ const Recipe = ({ user, recipe }) => {
               </div>
             </figure>
           </div>
-          <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 sm:block hidden">
+          <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 ">
             <img
               className="object-cover object-center rounded"
               src="https://dummyimage.com/720x600"
