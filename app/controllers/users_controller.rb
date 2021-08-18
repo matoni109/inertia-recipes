@@ -1,9 +1,17 @@
 class UsersController < ApplicationController
+  # def destroy
+  #   @user = current_user
+  #   sign_out @user
+  #   redirect_back fallback_location: user_session_path, allow_other_host: false
+  #   # redirect_to user_session_path
+  # end
+
   def destroy
     @user = current_user
     sign_out @user
-    redirect_back fallback_location: user_session_path, allow_other_host: false
-    # redirect_to user_session_path
+    render inertia: 'RecipeList', props: {
+      recipes: @user.recipes
+    }
   end
 
   private
