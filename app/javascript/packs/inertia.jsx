@@ -28,3 +28,4 @@ document.addEventListener('DOMContentLoaded', () => {
   )
 });
 // 23 mins video 3
+// https://blog.usejournal.com/devise-with-react-webpacker-and-rails-dacbf9ae0233
