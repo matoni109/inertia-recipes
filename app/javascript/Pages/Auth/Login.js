@@ -5,8 +5,8 @@ const Login = (user) => {
   const { errors } = usePage().props;
 
   const [values, setValues] = useState({
-    name: "",
-    description: "",
+    email: "",
+    password: "",
   });
 
   const valuesChangedHandler = (event) => {
@@ -22,13 +22,11 @@ const Login = (user) => {
     // const enteredUserName = name;
     // const enteredUserAge = description;
     // userData object gets passed as an args to props going UP to parent
-    const recipeData = {
-      name: values.name,
-      description: values.description,
+    const userData = {
+      email: values.email,
+      password: values.password,
     };
-    console.log(recipeData);
-
-    props.onSaveRecipeData(recipeData);
+    console.log(userData);
   };
   return (
     <>
@@ -45,20 +43,35 @@ const Login = (user) => {
                   Welcome Back!
                 </h1>
                 <div className="mx-auto mt-6 w-24 border-b-2" />
+                <label htmlFor="text-input-11" className="form-label">
+                  Email:
+                </label>
                 <input
                   v-model="form.user.email"
-                  className="mt-10"
+                  className="shadow appearance-none  rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                   label="Email"
                   type="email"
                   autoFocus
+                  id="email"
                   autoCapitalize="off"
+                  onChange={valuesChangedHandler}
+                  value={values.email}
                 />
-                <input
-                  v-model="form.user.password"
-                  className="mt-6"
-                  label="Password"
-                  type="password"
-                />
+                <div className="mt-6">
+                  <label htmlFor="text-input-11" className="form-label">
+                    Password:
+                  </label>
+                  <input
+                    v-model="form.user.password"
+                    className="shadow appearance-none  rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                    label="Password"
+                    type="password"
+                    id="password"
+                    onChange={valuesChangedHandler}
+                    value={values.password}
+                  />
+                </div>
+
                 <label
                   className="mt-6 select-none flex items-center"
                   htmlFor="remember"
@@ -80,7 +93,11 @@ const Login = (user) => {
                 >
                   Forgot password?
                 </a>
-                <button className="btn-indigo" type="submit">
+                <button
+                  className="btn-indigo"
+                  onClick={submitHandler}
+                  type="submit"
+                >
                   Login
                 </button>
               </div>
