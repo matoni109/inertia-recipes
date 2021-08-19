@@ -63,12 +63,14 @@ const Card = (props) => {
           </div>
           <p className="mb-4 text-gray-500">{props.props.description}</p>
           <InertiaLink
-            className="hover:underline"
+            className="text-white bg-purple-400 p-4 rounded-md w-full uppercase hover:underline"
             href={`/recipes/${props.props.id}`}
+            as="button"
           >
-            <button className="text-white bg-purple-400 p-4 rounded-md w-full uppercase">
-              View Recipe
-            </button>
+            View Recipe
+            {/* <button className="text-white bg-purple-400 p-4 rounded-md w-full uppercase">
+
+            </button> */}
           </InertiaLink>
         </div>
       </div>

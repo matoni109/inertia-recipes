@@ -26,10 +26,10 @@ const Recipe = ({ user, recipe }) => {
                   <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-100">
                     {recipe.name}
                   </h1>
-                  <p className="text-indigo-200 text-base pb-6">
+                  <p className="text-indigo-200 text-gray-100 pb-6">
                     {recipe.description}
                   </p>
-                  <p className="max-w-prose text-indigo-200 text-base pb-8">
+                  <p className="max-w-prose text-gray-100 pb-8">
                     We can't believe how far we have come in the last 6 months.
                     I really did not think this awesome career move would come
                     so quickly. Thanks to each of you put into SI and the
@@ -43,7 +43,7 @@ const Recipe = ({ user, recipe }) => {
                           className="h-full w-full object-cover overflow-hidden rounded-full"
                         />
                       </div>
-                      <p className="text-indigo-200 font-bold ml-3">
+                      <p className="text-gray-100 font-bold ml-3">
                         {user.name}
                         <br />
                         <span className="text-indigo-200 text-base font-light">

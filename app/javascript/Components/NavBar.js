@@ -1,7 +1,7 @@
 /* This example requires Tailwind CSS v2.0+ */
 import React from "react";
 import { Fragment } from "react";
-import { InertiaLink } from "@inertiajs/inertia-react";
+import { InertiaLink, Link } from "@inertiajs/inertia-react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
 
@@ -15,6 +15,8 @@ export default function NavBar({ user }) {
     { name: "Create Recipe", href: "/recipes/new", current: false },
     // { name: "Projects", href: "#", current: false },
     // { name: "Calendar", href: "#", current: false },
+    // https://medium.com/@clarkjohnson_85334/uploading-photos-into-rails-6-activestorage-from-javascript-react-file-and-camera-653de99b183f
+    // https://dev.to/racheladaw/uploading-profile-pictures-in-a-react-and-rails-api-app-part-ii-bm7
   ];
 
   return (
@@ -120,6 +122,7 @@ export default function NavBar({ user }) {
                             {({ active }) => (
                               <InertiaLink
                                 href="#"
+                                as="span"
                                 className={classNames(
                                   active ? "bg-gray-100" : "",
                                   "block px-4 py-2 text-sm text-gray-700"
@@ -132,7 +135,10 @@ export default function NavBar({ user }) {
                           <Menu.Item>
                             {({ active }) => (
                               <InertiaLink
-                                href="#"
+                                // href={`/users/${user.id}`}
+                                href={`/logout`}
+                                method="delete"
+                                as="span"
                                 className={classNames(
                                   active ? "bg-gray-100" : "",
                                   "block px-4 py-2 text-sm text-gray-700"
