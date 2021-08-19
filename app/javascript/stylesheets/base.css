@@ -1,7 +1,7 @@
 @import "tailwindcss/base";
 h1 {
   font-size: 2.2em;
-  color: #2563eb;
+  /* color: #2563eb; */
 }
 
 p {

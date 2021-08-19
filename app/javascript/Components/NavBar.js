@@ -122,6 +122,7 @@ export default function NavBar({ user }) {
                             {({ active }) => (
                               <InertiaLink
                                 href="#"
+                                as="span"
                                 className={classNames(
                                   active ? "bg-gray-100" : "",
                                   "block px-4 py-2 text-sm text-gray-700"
@@ -133,17 +134,18 @@ export default function NavBar({ user }) {
                           </Menu.Item>
                           <Menu.Item>
                             {({ active }) => (
-                              <Link
-                                href={`/users/${user.id}`}
-                                // href={`/logout`}
+                              <InertiaLink
+                                // href={`/users/${user.id}`}
+                                href={`/logout`}
                                 method="delete"
+                                as="span"
                                 className={classNames(
                                   active ? "bg-gray-100" : "",
                                   "block px-4 py-2 text-sm text-gray-700"
                                 )}
                               >
                                 Sign out
-                              </Link>
+                              </InertiaLink>
                             )}
                           </Menu.Item>
                         </Menu.Items>

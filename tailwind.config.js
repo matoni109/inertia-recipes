@@ -19,6 +19,7 @@ module.exports = {
       yellow: colors.yellow,
       green: colors.green,
       gray: colors.blueGray,
+      purple: colors.purple,
       indigo: {
         100: "#e6e8ff",
         300: "#b2b7ff",

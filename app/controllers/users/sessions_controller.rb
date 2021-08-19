@@ -11,6 +11,9 @@ class Users::SessionsController < Devise::SessionsController
 
   # DELETE /logout
   def destroy
-    super
+    # super
+    @user = current_user
+    sign_out @user
+    render inertia: 'Auth/Login', props: {}
   end
 end
