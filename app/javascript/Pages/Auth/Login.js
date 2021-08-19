@@ -1,4 +1,5 @@
 import { usePage } from "@inertiajs/inertia-react";
+import { Inertia } from "@inertiajs/inertia";
 import React, { useState } from "react";
 
 const Login = (user) => {
@@ -23,10 +24,13 @@ const Login = (user) => {
     // const enteredUserAge = description;
     // userData object gets passed as an args to props going UP to parent
     const userData = {
-      email: values.email,
-      password: values.password,
+      user: {
+        email: values.email,
+        password: values.password,
+      },
     };
     console.log(userData);
+    Inertia.post("/login", userData);
   };
   return (
     <>
