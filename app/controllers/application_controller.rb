@@ -1,9 +1,9 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :reset_session
-  # protect_from_forgery
-  skip_before_action :verify_authenticity_token
-
+  protect_from_forgery
   before_action :authenticate_user!
+  # protect_from_forgery
+  # skip_before_action :verify_authenticity_token
+
   # user lamba gives current user
   inertia_share user: -> { current_user }
 
