@@ -10,7 +10,7 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   # DELETE /logout
-  def destroy # rubocop:disable Lint/UselessMethodDefinition
+  def destroy
     super
   end
 end

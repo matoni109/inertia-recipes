@@ -135,6 +135,7 @@ export default function NavBar({ user }) {
                             {({ active }) => (
                               <Link
                                 href={`/users/${user.id}`}
+                                // href={`/logout`}
                                 method="delete"
                                 className={classNames(
                                   active ? "bg-gray-100" : "",

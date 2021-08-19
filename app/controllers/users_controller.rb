@@ -9,9 +9,7 @@ class UsersController < ApplicationController
   def destroy
     @user = current_user
     sign_out @user
-    render inertia: 'RecipeList', props: {
-      recipes: @user.recipes
-    }
+    render inertia: 'Auth/Login', props: {}
   end
 
   private
