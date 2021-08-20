@@ -2,7 +2,7 @@ import React from "react";
 import { InertiaLink } from "@inertiajs/inertia-react";
 
 const Card = (props) => {
-  console.log(props.props.name);
+  // console.log(props.props.name);
   return (
     <div>
       <div className="bg-white rounded-md overflow-hidden relative shadow-md">

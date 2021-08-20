@@ -20,7 +20,7 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      {flash.message && <Alert flash={flash} />}
+      {flash.alert || (flash.success && <Alert flash={flash} />)}
       <NavBar user={user} />
       {children}
       <Footer />

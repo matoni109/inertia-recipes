@@ -1,10 +1,12 @@
-import { usePage } from "@inertiajs/inertia-react";
+import { usePage, useForm } from "@inertiajs/inertia-react";
 import { Inertia } from "@inertiajs/inertia";
 import React, { useState } from "react";
 
 const Login = (user) => {
   const { errors } = usePage().props;
-
+  const { flash } = usePage().props;
+  console.log(errors);
+  console.log(flash);
   const [values, setValues] = useState({
     email: "",
     password: "",
@@ -27,9 +29,10 @@ const Login = (user) => {
       user: {
         email: values.email,
         password: values.password,
+        remember_me: 1,
       },
     };
-    console.log(userData);
+    // console.log(userData);
     Inertia.post("/login", userData);
   };
   return (
