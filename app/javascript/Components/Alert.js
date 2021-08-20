@@ -9,7 +9,7 @@ const Alert = (props) => {
         className="flex bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative"
         role="alert"
       >
-        <strong className="flex-1 font-bold">Holy smokes!</strong>
+        <strong className="flex-1 font-bold">That's Fab!</strong>
         <span className="flex-1 block sm:inline">{props.flash.success}</span>
         <span
           // onClick={props.onClick}

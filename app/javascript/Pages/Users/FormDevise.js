@@ -1,25 +1,27 @@
 import React from "react";
-import { useForm } from "@inertiajs/inertia-react";
+import { useForm, usePage } from "@inertiajs/inertia-react";
 
 const FormDevise = (props) => {
-  console.log(props);
+  const { flash } = usePage().props;
+  console.log(flash);
   const { data, setData, post, processing, errors } = useForm({
-    email: "",
-    password: "",
-    remember: false,
+    user: {
+      email: "",
+      password: "",
+      remember: false,
+    },
   });
-
-  // const userData = {
-  //   user: {
-  //     email: "M@m.com",
-  //     password: "1234561111",
-  //   },
-  // };
+  console.log(data);
+  const valuesChangedHandler = (event) => {
+    setData((values) => ({
+      user: { ...values.user, [event.target.id]: event.target.value },
+    }));
+  };
 
   function submit(e) {
     e.preventDefault();
     console.log(data);
-    post("/new", data);
+    post("/new");
   }
   return (
     <>
@@ -44,8 +46,10 @@ const FormDevise = (props) => {
               <input
                 className="shadow appearance-none  rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                 type="text"
-                value={data.email}
-                onChange={(e) => setData("email", e.target.value)}
+                id="email"
+                value={data.user.email}
+                onChange={valuesChangedHandler}
+                // onChange={(e) => setData("email", e.target.value)}
               />
               {errors.email && <div>{errors.email}</div>}
               <label htmlFor="text-input-11" className="form-label">
@@ -54,8 +58,10 @@ const FormDevise = (props) => {
               <input
                 className="shadow appearance-none  rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                 type="password"
+                id="password"
                 value={data.password}
-                onChange={(e) => setData("password", e.target.value)}
+                // onChange={(e) => setData("password", e.target.value)}
+                onChange={valuesChangedHandler}
               />
               {errors.password && <div>{errors.password}</div>}
 
@@ -68,50 +74,6 @@ const FormDevise = (props) => {
               </button>
             </div>
           </form>
-          {/* <template>
-        <form>
-          <div class="p-8 -mr-6 -mb-8 flex flex-wrap">
-            <input
-              v-model="form.user.first_name"
-              class="pr-6 pb-8 w-full lg:w-1/2"
-              label="First name"
-            />
-            <input
-              v-model="form.user.last_name"
-              class="pr-6 pb-8 w-full lg:w-1/2"
-              label="Last name"
-            />
-            <input
-              v-model="form.user.email"
-              class="pr-6 pb-8 w-full lg:w-1/2"
-              label="Email"
-            />
-            <input
-              v-model="form.user.password"
-              class="pr-6 pb-8 w-full lg:w-1/2"
-              type="password"
-              autocomplete="new-password"
-              label="Password"
-            />
-            <input
-              v-model="form.user.owner"
-              class="pr-6 pb-8 w-full lg:w-1/2"
-              label="Owner"
-            >
-              <option value="true">Yes</option>
-              <option value="false">No</option>
-            </input>
-            <input
-              v-model="form.user.photo"
-              class="pr-6 pb-8 w-full lg:w-1/2"
-              type="file"
-              accept="image/*"
-              label="Photo"
-            />
-          </div>
-          <slot />
-        </form>
-      </template> */}
         </div>
       </div>
     </>

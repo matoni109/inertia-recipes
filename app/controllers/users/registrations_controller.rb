@@ -9,9 +9,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def create
-    resource = params
     super do |resource|
-      raise
+      # raise
       unless resource.persisted?
         clean_up_passwords resource
         set_minimum_password_length
@@ -25,6 +24,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:registration, keys: %i[name email password])
+    devise_parameter_sanitizer.permit(:user, keys: %i[name email password])
   end
 end
