@@ -11,12 +11,13 @@ import "./application.css";
 import "./application.scss";
 // bring in Inertia
 import "./inertia.jsx";
+// import axios from "axios";
 
 Rails.start();
 ActiveStorage.start();
 
 console.log("Hello World from Webpacker JS/PACKS + inertia");
-
+// axios.defaults.xsrfHeaderName = "X-CSRF-Token";
 // import React from "react";
 // import { render } from "react-dom";
 // import { createInertiaApp } from "@inertiajs/inertia-react";

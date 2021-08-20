@@ -2,18 +2,15 @@ class Users::SessionsController < Devise::SessionsController
   # GET /login
   def new
     render inertia: 'Auth/Login', props: {}
+    # super
   end
 
-  # POST /login
-  def create # rubocop:disable Lint/UselessMethodDefinition
+  def create
     super
   end
 
   # DELETE /logout
   def destroy
-    # super
-    @user = current_user
-    sign_out @user
-    render inertia: 'Auth/Login', props: {}
+    super
   end
 end

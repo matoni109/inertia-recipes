@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { InertiaLink, usePage } from "@inertiajs/inertia-react";
+import { usePage } from "@inertiajs/inertia-react";
 import NavBar from "./NavBar";
 import Alert from "./Alert";
 import Footer from "./Footer";
@@ -20,7 +20,7 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      {flash.message && <Alert flash={flash} />}
+      {flash.alert || (flash.success && <Alert flash={flash} />)}
       <NavBar user={user} />
       {children}
       <Footer />
