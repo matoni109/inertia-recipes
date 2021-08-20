@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session
   before_action :authenticate_user!
 
+  # these are in app/concerns
+
   include InertiaCsrf
   include InertiaFlash
   # user lamba gives current user

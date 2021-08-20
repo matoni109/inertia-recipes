@@ -3,14 +3,13 @@ import { Inertia } from "@inertiajs/inertia";
 import React, { useState } from "react";
 
 const Login = (user) => {
-  const { errors } = usePage().props;
   const { flash } = usePage().props;
-  console.log(errors);
-  console.log(flash);
+  // console.log(errors);
+  // console.log(flash);
   const [values, setValues] = useState({
-    email: "",
-    password: "",
-    remember_me: 0,
+    email: "alex@democorp.com",
+    password: "123456",
+    remember_me: false,
   });
 
   const valuesChangedHandler = (event) => {
@@ -30,7 +29,7 @@ const Login = (user) => {
       user: {
         email: values.email,
         password: values.password,
-        remember_me: 1,
+        remember_me: values.remember_me,
       },
     };
     // console.log(userData);
@@ -65,17 +64,17 @@ const Login = (user) => {
                   </div>
                 )}
                 {flash.success && (
-                  <div class="bg-blue-200 px-6 py-4 mx-2 my-4 rounded-md text-lg flex items-center mx-auto ">
+                  <div className="bg-blue-200 px-6 py-4 mx-2 my-4 rounded-md text-lg flex items-center mx-auto ">
                     <svg
                       viewBox="0 0 24 24"
-                      class="text-blue-600 w-5 h-5 sm:w-5 sm:h-5 mr-3"
+                      className="text-blue-600 w-5 h-5 sm:w-5 sm:h-5 mr-3"
                     >
                       <path
                         fill="currentColor"
                         d="M12,0A12,12,0,1,0,24,12,12.013,12.013,0,0,0,12,0Zm.25,5a1.5,1.5,0,1,1-1.5,1.5A1.5,1.5,0,0,1,12.25,5ZM14.5,18.5h-4a1,1,0,0,1,0-2h.75a.25.25,0,0,0,.25-.25v-4.5a.25.25,0,0,0-.25-.25H10.5a1,1,0,0,1,0-2h1a2,2,0,0,1,2,2v4.75a.25.25,0,0,0,.25.25h.75a1,1,0,1,1,0,2Z"
                       ></path>
                     </svg>
-                    <span class="text-blue-800">{flash.success}</span>
+                    <span className="text-blue-800">{flash.success}</span>
                   </div>
                 )}
                 <div className="mx-auto mt-6 w-24 border-b-2" />
@@ -83,7 +82,6 @@ const Login = (user) => {
                   Email:
                 </label>
                 <input
-                  v-model="form.user.email"
                   className="shadow appearance-none  rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                   label="Email"
                   type="email"
@@ -98,7 +96,6 @@ const Login = (user) => {
                     Password:
                   </label>
                   <input
-                    v-model="form.user.password"
                     className="shadow appearance-none  rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                     label="Password"
                     type="password"
@@ -119,6 +116,7 @@ const Login = (user) => {
                     type="checkbox"
                     onChange={valuesChangedHandler}
                     value={values.remember_me}
+                    defaultChecked={values.remember_me}
                   />
                   <span className="text-sm">Remember Me</span>
                 </label>
