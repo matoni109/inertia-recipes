@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { InertiaLink, usePage } from "@inertiajs/inertia-react";
+import { usePage } from "@inertiajs/inertia-react";
 import NavBar from "./NavBar";
 import Alert from "./Alert";
 import Footer from "./Footer";
