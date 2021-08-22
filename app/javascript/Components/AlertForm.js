@@ -1,7 +1,7 @@
 import React from "react";
 
 const AlertForm = (props) => {
-  console.log(props);
+  // console.log(props);
   return (
     <>
       {props.props.alert && (

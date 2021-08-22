@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     post 'login', to: 'users/sessions#create', as: :user_session
     get 'new', to: 'users/registrations#new', as: :new_user_registration
     post 'new', to: 'users/registrations#create', as: :user_registration
+    get 'edit', to: 'users/registrations#edit', as: :edit_user_registration
+    patch 'edit', to: 'users/registrations#update', as: :update_user_registration
     match 'logout', to: 'users/sessions#destroy', as: :destroy_user_session, via: Devise.mappings[:user].sign_out_via
   end
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { useForm, usePage } from "@inertiajs/inertia-react";
-import AlertForm from "../../Components/AlertForm";
+import AlertForm from "../../../Components/AlertForm";
 
 const FormDevise = (props) => {
   const { flash } = usePage().props;
@@ -38,8 +38,8 @@ const FormDevise = (props) => {
           >
             <div className="px-10 py-12">
               <h1 className="text-center font-bold text-3xl">
-                {/* {props.title} */}
-                New User Registration
+                {props.title}
+                {/* New User Registration */}
               </h1>
               <AlertForm props={flash} />
               <div className="mx-auto mt-6 w-24 border-b-2" />

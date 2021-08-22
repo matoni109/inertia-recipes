@@ -1,4 +1,4 @@
-import { usePage, useForm } from "@inertiajs/inertia-react";
+import { usePage, useForm, InertiaLink } from "@inertiajs/inertia-react";
 import { Inertia } from "@inertiajs/inertia";
 import React, { useState } from "react";
 import AlertForm from "../../Components/AlertForm";
@@ -111,6 +111,21 @@ const Login = (user) => {
                 >
                   Login
                 </button>
+                {/* <button
+                  className="btn-indigo"
+                  onClick={submitHandler}
+                  type="submit"
+                >
+                  Login
+                </button> */}
+                <InertiaLink
+                  className="btn-indigo"
+                  as="button"
+                  type="submit"
+                  href={`/new`}
+                >
+                  Sign Up
+                </InertiaLink>
               </div>
             </form>
           </div>
