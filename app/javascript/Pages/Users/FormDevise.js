@@ -1,9 +1,10 @@
 import React from "react";
 import { useForm, usePage } from "@inertiajs/inertia-react";
+import AlertForm from "../../Components/AlertForm";
 
 const FormDevise = (props) => {
   const { flash } = usePage().props;
-  console.log(flash);
+
   const { data, setData, post, processing, errors } = useForm({
     user: {
       email: "",
@@ -11,7 +12,7 @@ const FormDevise = (props) => {
       remember: false,
     },
   });
-  console.log(data);
+
   const valuesChangedHandler = (event) => {
     setData((values) => ({
       user: { ...values.user, [event.target.id]: event.target.value },
@@ -20,7 +21,7 @@ const FormDevise = (props) => {
 
   function submit(e) {
     e.preventDefault();
-    console.log(data);
+    // console.log(data);
     post("/new");
   }
   return (
@@ -39,6 +40,7 @@ const FormDevise = (props) => {
               <h1 className="text-center font-bold text-3xl">
                 New User Registration
               </h1>
+              <AlertForm props={flash} />
               <div className="mx-auto mt-6 w-24 border-b-2" />
               <label htmlFor="text-input-11" className="form-label">
                 Email:
@@ -51,7 +53,11 @@ const FormDevise = (props) => {
                 onChange={valuesChangedHandler}
                 // onChange={(e) => setData("email", e.target.value)}
               />
-              {errors.email && <div>{errors.email}</div>}
+              {errors.email && (
+                <div class="border border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
+                  <p>{errors.email}</p>
+                </div>
+              )}
               <label htmlFor="text-input-11" className="form-label">
                 Password:
               </label>
@@ -63,10 +69,14 @@ const FormDevise = (props) => {
                 // onChange={(e) => setData("password", e.target.value)}
                 onChange={valuesChangedHandler}
               />
-              {errors.password && <div>{errors.password}</div>}
+              {errors.password && (
+                <div class="border border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
+                  <p>{errors.password}</p>
+                </div>
+              )}
 
               <button
-                className="btn-indigo"
+                className="btn-indigo my-2"
                 type="submit"
                 disabled={processing}
               >

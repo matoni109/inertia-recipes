@@ -14,8 +14,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
       unless resource.persisted?
         clean_up_passwords resource
         set_minimum_password_length
-        session[:errors] = resource.errors
-        redirect_to new_user_registration_path, alert: 'There was a problem in your registration'
+        session[:errors] = resource.errors.messages
+        redirect_to new_user_registration_path, inertia: { errors: resource.errors.messages }
         return
       end
     end
