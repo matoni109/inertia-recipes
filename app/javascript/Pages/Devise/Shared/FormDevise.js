@@ -2,29 +2,35 @@ import React from "react";
 import { useForm, usePage } from "@inertiajs/inertia-react";
 import AlertForm from "../../../Components/AlertForm";
 
-const FormDevise = (props, user) => {
-  console.log(user);
-  const { flash } = usePage().props;
+//
+// https://stackoverflow.com/questions/3827011/devise-custom-routes-and-login-pages
+//
 
-  const { data, setData, post, processing, errors } = useForm({
-    user: {
-      email: "",
-      password: "",
-      remember: false,
-    },
-  });
+const FormDevise = (props) => {
+  // const { flash } = usePage().props;
 
-  const valuesChangedHandler = (event) => {
-    setData((values) => ({
-      user: { ...values.user, [event.target.id]: event.target.value },
-    }));
-  };
+  // const { data, setData, post, processing, errors } = useForm({
+  //   user: {
+  //     email: "",
+  //     password: "" || props.user.password,
+  //     remember: false,
+  //   },
+  // });
 
-  function submit(e) {
-    e.preventDefault();
-    // console.log(data);
-    post("/new");
-  }
+  // const valuesChangedHandler = (event) => {
+  //   setData((values) => ({
+  //     user: { ...values.user, [event.target.id]: event.target.value },
+  //   }));
+  // };
+
+  // // edit then
+  // // updata then
+
+  // function submit(e) {
+  //   e.preventDefault();
+  //   // console.log(data);
+  //   post("/new");
+  // }
   return (
     <>
       <div className="p-6 bg-indigo-800 min-h-screen flex justify-center items-center">
