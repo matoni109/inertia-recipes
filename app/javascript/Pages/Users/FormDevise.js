@@ -38,6 +38,7 @@ const FormDevise = (props) => {
           >
             <div className="px-10 py-12">
               <h1 className="text-center font-bold text-3xl">
+                {/* {props.title} */}
                 New User Registration
               </h1>
               <AlertForm props={flash} />
@@ -54,7 +55,7 @@ const FormDevise = (props) => {
                 // onChange={(e) => setData("email", e.target.value)}
               />
               {errors.email && (
-                <div class="border border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
+                <div className="border border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
                   <p>{errors.email}</p>
                 </div>
               )}
@@ -62,7 +63,7 @@ const FormDevise = (props) => {
                 Password:
               </label>
               <input
-                className="shadow appearance-none  rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none rounded w-full py-1 px-2 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                 type="password"
                 id="password"
                 value={data.password}
@@ -70,7 +71,7 @@ const FormDevise = (props) => {
                 onChange={valuesChangedHandler}
               />
               {errors.password && (
-                <div class="border border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
+                <div className="border border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
                   <p>{errors.password}</p>
                 </div>
               )}
