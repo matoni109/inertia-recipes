@@ -4,6 +4,7 @@ import FormDevise from "../Shared/FormDevise";
 import Layout from "../../../Components/Layout";
 
 const Edit = (props) => {
+  console.log(props);
   return (
     <>
       <FormDevise title="Edit User Profile" />

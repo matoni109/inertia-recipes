@@ -2,7 +2,8 @@ import React from "react";
 import { useForm, usePage } from "@inertiajs/inertia-react";
 import AlertForm from "../../../Components/AlertForm";
 
-const FormDevise = (props) => {
+const FormDevise = (props, user) => {
+  console.log(user);
   const { flash } = usePage().props;
 
   const { data, setData, post, processing, errors } = useForm({
