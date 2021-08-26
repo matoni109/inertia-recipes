@@ -10,7 +10,7 @@ const Login = (user) => {
   const [values, setValues] = useState({
     email: "alex@democorp.com",
     password: "123456",
-    remember: false,
+    remember_me: false,
   });
 
   const valuesChangedHandler = (event) => {
@@ -90,8 +90,8 @@ const Login = (user) => {
                     className="mr-1"
                     type="checkbox"
                     onChange={valuesChangedHandler}
-                    value={values.remember}
-                    defaultChecked={values.remember}
+                    value={values.remember_me}
+                    defaultChecked={values.remember_me}
                   />
                   <span className="text-sm">Remember Me</span>
                 </label>

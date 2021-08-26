@@ -13,4 +13,9 @@ class ApplicationController < ActionController::Base
   def after_sign_out_path_for(_resource_or_scope)
     new_user_session_path
   end
+
+  # Update Path
+  def after_update_path_for(resource)
+    edit_user_registration_path(resource)
+  end
 end

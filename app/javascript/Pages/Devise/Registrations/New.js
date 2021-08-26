@@ -13,7 +13,6 @@ const New = (props) => {
     user: {
       email: "",
       password: "",
-      remember: false,
     },
   });
 
