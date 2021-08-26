@@ -43,24 +43,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
       set_flash_message_for_update(resource, prev_unconfirmed_email)
       bypass_sign_in resource, scope: resource_name if sign_in_after_change_password?
 
-      respond_with resource, location: after_update_path_for(resource) # location: edit_user_registration_path(resource)
+      respond_with resource, location: after_update_path_for(resource)
     else
       clean_up_passwords resource
       set_minimum_password_length
-      # respond_with resource
+
       redirect_to edit_user_registration_path, inertia: { errors: resource.errors.messages }
     end
-    # super do |resource|
-    #   raise 'help me top'
-    #   unless resource.persisted?
-    #     raise 'errors block'
-    #     clean_up_passwords resource
-    #     set_minimum_password_length
-    #     session[:errors] = resource.errors.messages
-    #     redirect_to edit_user_registration_path, inertia: { errors: resource.errors.messages }
-    #     return
-    #   end
-    # end
   end
 
   def configure_permitted_parameters
