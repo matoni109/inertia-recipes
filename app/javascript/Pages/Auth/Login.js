@@ -20,7 +20,12 @@ const Login = (user) => {
       [event.target.id]: event.target.value,
     }));
   };
-
+  const checkboxHandler = (event) => {
+    setValues((values) => ({
+      ...values,
+      [event.target.id]: !values.remember_me,
+    }));
+  };
   const submitHandler = (event) => {
     event.preventDefault();
     // const enteredUserName = name;
@@ -85,11 +90,11 @@ const Login = (user) => {
                   htmlFor="remember"
                 >
                   <input
-                    id="remember"
+                    id="remember_me"
                     v-model="form.user.remember_me"
                     className="mr-1"
                     type="checkbox"
-                    onChange={valuesChangedHandler}
+                    onChange={checkboxHandler}
                     value={values.remember_me}
                     defaultChecked={values.remember_me}
                   />
