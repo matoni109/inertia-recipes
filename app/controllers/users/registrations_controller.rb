@@ -1,6 +1,6 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   layout false
-  # before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
   # GET /resource/
   def new
@@ -48,9 +48,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:user, keys: %i[name email password])
+    attributes = %i[name surname username email avatar]
+    devise_parameter_sanitizer.permit(:sign_up, keys: attributes)
+    devise_parameter_sanitizer.permit(:account_update, keys: attributes)
   end
-
   # DEFAULT_PERMITTED_ATTRIBUTES =
 
   #     {

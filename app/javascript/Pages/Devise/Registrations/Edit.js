@@ -8,6 +8,7 @@ const Edit = (props) => {
   // } = usePage();
   const { data, setData, patch, processing, errors } = useForm({
     user: {
+      name: props.user.name,
       email: props.user.email,
       password: "",
       password_confirmation: "",
@@ -45,11 +46,28 @@ const Edit = (props) => {
           >
             <div className="px-10 py-12">
               <h1 className="text-center font-bold text-3xl">
-                {props.title}
-                {/* New User Registration */}
+                {/* {props.title} */}
+                Edit User Registration
               </h1>
               {/* <AlertForm props={flash} /> */}
               <div className="mx-auto mt-6 w-24 border-b-2" />
+              <label htmlFor="text-input-11" className="form-label">
+                Name:
+              </label>
+              <input
+                className="shadow appearance-none  rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                type="text"
+                id="name"
+                value={data.user.name}
+                onChange={valuesChangedHandler}
+                // onChange={(e) => setData("email", e.target.value)}
+              />
+              {errors.name && (
+                <div className="border border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
+                  <p>{errors.name}</p>
+                </div>
+              )}
+              {/* Email */}
               <label htmlFor="text-input-11" className="form-label">
                 Email:
               </label>
