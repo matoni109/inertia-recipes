@@ -47,6 +47,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  private
+
   def configure_permitted_parameters
     attributes = %i[name surname username email avatar]
     devise_parameter_sanitizer.permit(:sign_up, keys: attributes)

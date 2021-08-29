@@ -2,17 +2,18 @@ import React from "react";
 import { useForm, usePage } from "@inertiajs/inertia-react";
 // import AlertForm from "../../../Components/AlertForm";
 
-//
+// https://github.com/react-dropzone/react-dropzone
 // https://stackoverflow.com/questions/3827011/devise-custom-routes-and-login-pages
-//
+// https://github.com/kirill3333/react-avatar
 
 const New = (props) => {
   // const { flash } = usePage().props;
 
-  const { data, setData, post, processing, errors } = useForm({
+  const { data, setData, post, processing, errors, progress } = useForm({
     user: {
       email: "",
       password: "",
+      avatar: "",
     },
   });
 
@@ -20,6 +21,15 @@ const New = (props) => {
     setData((values) => ({
       user: { ...values.user, [event.target.id]: event.target.value },
     }));
+  };
+  // [event.target.id]: event.target.files[0],
+  const avatarHandler = (event) => {
+    console.log(event.target.id);
+    console.log(event.target.files[0]);
+    setData((values) => ({
+      user: { ...values.user, [event.target.id]: event.target.files[0] },
+    }));
+    console.log(data.user.avatar.name);
   };
 
   function submit(e) {
@@ -41,10 +51,22 @@ const New = (props) => {
             <div className="px-10 py-12">
               <h1 className="text-center font-bold text-3xl">
                 {props.title}
-                {/* New User Registration */}
+                New User Registration
               </h1>
               {/* <AlertForm props={props.flash} /> */}
               <div className="mx-auto mt-6 w-24 border-b-2" />
+              <input
+                type="file"
+                id="avatar"
+                // value={data.user.avatar.name}
+                // onChange={(e) => setData("avatar", e.target.files[0])}
+                onChange={avatarHandler}
+              />
+              {progress && (
+                <progress value={progress.percentage} max="100">
+                  {progress.percentage}%
+                </progress>
+              )}
               <label htmlFor="text-input-11" className="form-label">
                 Email:
               </label>
