@@ -16,7 +16,7 @@ const Layout = ({ children }) => {
   //   // setAlertState(false);
   // };
 
-  // console.log(flash);
+  console.log(flash);
 
   return (
     <>
