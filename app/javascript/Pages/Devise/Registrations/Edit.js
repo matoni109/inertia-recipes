@@ -3,7 +3,7 @@ import { useForm } from "@inertiajs/inertia-react";
 import Layout from "../../../Components/Layout";
 
 const Edit = (props) => {
-  console.log(props.user);
+  // console.log(props.user);
   // const {
   //   props: { user, flash },
   // } = usePage();

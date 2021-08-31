@@ -1,8 +1,11 @@
 import React from "react";
 import { InertiaLink } from "@inertiajs/inertia-react";
 import { Inertia } from "@inertiajs/inertia";
+import { recipes } from "../api/all";
 import SearchFilter from "../Components/SearchFilters";
 const Recipe = ({ user, recipe }) => {
+  const recipeTest = recipes.get({ id: 2 });
+
   const deleteHandler = () => {
     console.log(`/recipes/${recipe.id}`);
     // Inertia.delete(`/recipes/${recipe.id}`);
