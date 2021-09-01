@@ -4,7 +4,20 @@ import { Inertia } from "@inertiajs/inertia";
 import { recipes } from "../api/all";
 import SearchFilter from "../Components/SearchFilters";
 const Recipe = ({ user, recipe }) => {
-  const recipeTest = recipes.get({ id: 2 });
+  // const recipeTest = recipes.get({ id: 2 });
+  // const response = await recipes.get({
+  //   params: recipe,
+  //   responseAs: "response",
+  // });
+
+  // (async () => {
+  //   const response = await recipes.get({
+  //     params: recipe,
+  //     responseAs: "response",
+  //   });
+  //   // no console.log in the debugger
+  //   console.log(response);
+  // })();
 
   const deleteHandler = () => {
     console.log(`/recipes/${recipe.id}`);
@@ -14,6 +27,7 @@ const Recipe = ({ user, recipe }) => {
       onBefore: () => confirm("Are you sure you want to delete this user?"),
     });
   };
+
   return (
     <>
       {/* <SearchFilter /> */}

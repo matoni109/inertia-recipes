@@ -10,10 +10,9 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function NavBar({ user, props }) {
-  // console.log(users);
+export default function NavBar({ user, avatar, props }) {
   // const userTest = users.get({ id: 1 });
-  //console.log(userTest);
+  console.log(user);
 
   const navigation = [
     { name: `${user.name}' Recipes`, href: "/recipes", current: true },

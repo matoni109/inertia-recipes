@@ -7,7 +7,13 @@ class ApplicationController < ActionController::Base
   include InertiaCsrf
   include InertiaFlash
   # user lamba gives current user
-  inertia_share user: -> { current_user }
+  # avatar_blob
+  # avatar_attachment
+
+  inertia_share user: {
+    avatar: -> { User.find_by(id: current_user.id).avatar },
+    user: -> { current_user }
+  }
 
   # Logout Path
   def after_sign_out_path_for(_resource_or_scope)
