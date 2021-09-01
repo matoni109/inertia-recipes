@@ -10,12 +10,12 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function NavBar({ user, avatar, props }) {
+export default function NavBar({ data }) {
   // const userTest = users.get({ id: 1 });
-  console.log(user);
+  console.log(data);
 
   const navigation = [
-    { name: `${user.name}' Recipes`, href: "/recipes", current: true },
+    { name: `${data.user.name}' Recipes`, href: "/recipes", current: true },
     { name: "Create Recipe", href: "/recipes/new", current: false },
     // { name: "Projects", href: "#", current: false },
     // { name: "Calendar", href: "#", current: false },
@@ -118,7 +118,7 @@ export default function NavBar({ user, avatar, props }) {
                                   "block px-4 py-2 text-sm text-gray-700"
                                 )}
                               >
-                                {user.name}'s Profile
+                                {data.user.name}'s Profile
                               </InertiaLink>
                             )}
                           </Menu.Item>

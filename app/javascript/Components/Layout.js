@@ -6,7 +6,7 @@ import Footer from "./Footer";
 
 const Layout = ({ children }) => {
   const {
-    props: { user },
+    props: { data },
   } = usePage();
   const { flash } = usePage().props;
   // const [showAlert, setAlertState] = useState(true);
@@ -17,11 +17,12 @@ const Layout = ({ children }) => {
   // };
 
   console.log(flash);
+  console.log(data);
 
   return (
     <>
       {flash.alert || (flash.success && <Alert flash={flash} />)}
-      <NavBar user={user} />
+      <NavBar data={data} />
       {children}
       <Footer />
     </>
