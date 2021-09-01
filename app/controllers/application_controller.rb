@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   # avatar_attachment
 
   inertia_share data: {
-    avatar: -> { User.find_by(id: current_user.id).avatar },
+    avatar: -> { User.find_by(id: current_user.id).avatar if current_user },
     user: -> { current_user }
   }
 

@@ -2,7 +2,7 @@ import React from "react";
 //codepen.io/sturner/pen/rNyEjPp
 // https://daisyui.com/docs/install
 
-import Card from "../Components/Card";
+import Card from "~/Components/Card";
 const RecipeList = ({ recipes, data }) => {
   // console.log(data);
   return (

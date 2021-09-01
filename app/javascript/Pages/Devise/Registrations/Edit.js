@@ -1,6 +1,6 @@
 import React from "react";
 import { useForm } from "@inertiajs/inertia-react";
-import Layout from "../../../Components/Layout";
+import Layout from "~/Components/Layout";
 
 const Edit = (props) => {
   // console.log(props.user);

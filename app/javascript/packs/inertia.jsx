@@ -3,7 +3,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import axios from 'axios';
 import { InertiaProgress } from '@inertiajs/progress';
-import Layout from "../Components/Layout"
+import Layout from "~/Components/Layout"
 
 document.addEventListener('DOMContentLoaded', () => {
   InertiaProgress.init();
