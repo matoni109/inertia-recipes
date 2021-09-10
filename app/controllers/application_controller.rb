@@ -11,9 +11,16 @@ class ApplicationController < ActionController::Base
   # avatar_attachment
 
   inertia_share data: {
-    avatar: -> { User.find_by(id: current_user.id).avatar },
     user: -> { current_user }
   }
+  # Lazily share the avatar
+  inertia_share do
+    if current_user
+      {
+        avatar: -> { User.find_by(id: current_user.id).avatar || '' }
+      }
+    end
+  end
 
   # Logout Path
   def after_sign_out_path_for(_resource_or_scope)
