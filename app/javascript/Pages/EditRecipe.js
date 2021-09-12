@@ -1,6 +1,6 @@
 import React from "react";
 
-import FormEdit from "../Components/FormEdit";
+import FormEdit from "~/Components/FormEdit";
 import { Inertia } from "@inertiajs/inertia";
 
 const EditRecipe = ({ recipe }) => {

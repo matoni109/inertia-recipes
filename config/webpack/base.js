@@ -1,3 +1,12 @@
-const { webpackConfig } = require("@rails/webpacker");
+const path = require('path')
+const { webpackConfig, merge } = require("@rails/webpacker");
 
-module.exports = webpackConfig;
+const jsRoot = path.resolve(__dirname, '../../app/javascript')
+
+module.exports = merge(webpackConfig, {
+  resolve: {
+    alias: {
+      '~': jsRoot,
+    },
+  },
+})

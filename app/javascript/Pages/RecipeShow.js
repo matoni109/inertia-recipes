@@ -1,9 +1,10 @@
 import React from "react";
 import { InertiaLink } from "@inertiajs/inertia-react";
 import { Inertia } from "@inertiajs/inertia";
-import { recipes } from "../api/all";
-import SearchFilter from "../Components/SearchFilters";
-const Recipe = ({ user, recipe }) => {
+import { recipes } from "~/api/all";
+import SearchFilter from "~/Components/SearchFilters";
+const Recipe = (props) => {
+  const { data: { user, avatar }, recipe } = props
   // const recipeTest = recipes.get({ id: 2 });
   // const response = await recipes.get({
   //   params: recipe,

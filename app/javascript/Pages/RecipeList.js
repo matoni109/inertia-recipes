@@ -5,6 +5,7 @@ import React from "react";
 import Card from "../Components/Card";
 const RecipeList = ({ recipes, data, avatar }) => {
   console.log(avatar);
+
   return (
     <>
       {/* <Header /> */}

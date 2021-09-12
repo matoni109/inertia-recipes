@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { usePage } from "@inertiajs/inertia-react";
-import Form from "../Components/Form";
+import Form from "~/Components/Form";
 import { Inertia } from "@inertiajs/inertia";
 
 const CreateRecipe = () => {

@@ -1,6 +1,6 @@
 import React from "react";
 import { useForm, usePage } from "@inertiajs/inertia-react";
-// import AlertForm from "../../../Components/AlertForm";
+// import AlertForm from "~/Components/AlertForm";
 
 // https://github.com/react-dropzone/react-dropzone
 // https://stackoverflow.com/questions/3827011/devise-custom-routes-and-login-pages
