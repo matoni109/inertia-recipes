@@ -4,24 +4,14 @@ import { Inertia } from "@inertiajs/inertia";
 import { recipes } from "~/api/all";
 import SearchFilter from "~/Components/SearchFilters";
 const Recipe = (props) => {
-  const { data: { user, avatar }, recipe } = props
-  // const recipeTest = recipes.get({ id: 2 });
-  // const response = await recipes.get({
-  //   params: recipe,
-  //   responseAs: "response",
-  // });
-
-  // (async () => {
-  //   const response = await recipes.get({
-  //     params: recipe,
-  //     responseAs: "response",
-  //   });
-  //   // no console.log in the debugger
-  //   console.log(response);
-  // })();
-
+  const {
+    data: { user, avatar },
+    recipe,
+  } = props;
+  console.log(user);
+  console.log(avatar);
   const deleteHandler = () => {
-    console.log(`/recipes/${recipe.id}`);
+    // console.log(`/recipes/${recipe.id}`);
     // Inertia.delete(`/recipes/${recipe.id}`);
     // Inertia.visit(`/recipes/${recipe.id}`, { method: "delete" });
     Inertia.delete(`/recipes/${recipe.id}`, {
@@ -57,7 +47,7 @@ const Recipe = (props) => {
                     <div className="flex items-center pb-12">
                       <div className="h-12 w-12">
                         <img
-                          src="https://tuk-cdn.s3.amazonaws.com/assets/components/testimonials/t_1.png"
+                          src="https://res.cloudinary.com/oeelsafe/image/upload/cag5oirgzrugrw647ls4fb4k30gf.jpeg"
                           className="h-full w-full object-cover overflow-hidden rounded-full"
                         />
                       </div>
