@@ -1,5 +1,5 @@
 import React from "react";
-import { useForm, usePage } from "@inertiajs/inertia-react";
+import { useForm } from "@inertiajs/inertia-react";
 // import AlertForm from "~/Components/AlertForm";
 
 // https://github.com/react-dropzone/react-dropzone
@@ -13,7 +13,7 @@ const New = (props) => {
     user: {
       email: "",
       password: "",
-      avatar: "",
+      avatar: undefined,
     },
   });
 
@@ -43,6 +43,7 @@ const New = (props) => {
             height="50"
           />
           <form
+            encType="multipart/form-data"
             className="mt-8 bg-white rounded-lg shadow-xl overflow-hidden"
             onSubmit={submit}
           >
@@ -53,10 +54,14 @@ const New = (props) => {
               </h1>
               {/* <AlertForm props={props.flash} /> */}
               <div className="mx-auto mt-6 w-24 border-b-2" />
+              <label htmlFor="text-input-11" className="form-label">
+                Avatar:
+              </label>
               <input
                 type="file"
                 id="avatar"
-                // value={data.user.avatar.name}
+                className="button"
+                // value={data.user.avatar}
                 // onChange={(e) => setData("avatar", e.target.files[0])}
                 onChange={avatarHandler}
               />

@@ -9,9 +9,10 @@ class ApplicationController < ActionController::Base
   # user lamba gives current user
   # avatar_blob
   # avatar_attachment
+  # https://edgeguides.rubyonrails.org/active_storage_overview.html
 
   inertia_share data: {
-    avatar: -> { User.find_by(id: current_user.id).avatar_blob if current_user.avatar.attached? },
+    avatar: -> { User.find_by(id: current_user.id).avatar_blob if current_user && current_user.avatar.attached? },
     user: -> { current_user }
   }
 
