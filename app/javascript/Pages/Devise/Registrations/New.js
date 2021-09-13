@@ -56,20 +56,20 @@ const New = (props) => {
               <div className="mx-auto mt-6 w-24 border-b-2" />
               <label htmlFor="text-input-11" className="form-label">
                 Avatar:
+                <input
+                  type="file"
+                  id="avatar"
+                  class="shadow appearance-none  rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                  // value={data.user.avatar}
+                  // onChange={(e) => setData("avatar", e.target.files[0])}
+                  onChange={avatarHandler}
+                />
+                {progress && (
+                  <progress value={progress.percentage} max="100">
+                    {progress.percentage}%
+                  </progress>
+                )}
               </label>
-              <input
-                type="file"
-                id="avatar"
-                className="button"
-                // value={data.user.avatar}
-                // onChange={(e) => setData("avatar", e.target.files[0])}
-                onChange={avatarHandler}
-              />
-              {progress && (
-                <progress value={progress.percentage} max="100">
-                  {progress.percentage}%
-                </progress>
-              )}
               <label htmlFor="text-input-11" className="form-label">
                 Email:
               </label>
