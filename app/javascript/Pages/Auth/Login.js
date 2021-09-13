@@ -1,7 +1,7 @@
 import { usePage, useForm, InertiaLink } from "@inertiajs/inertia-react";
 import { Inertia } from "@inertiajs/inertia";
 import React, { useState } from "react";
-import AlertForm from "../../Components/AlertForm";
+import AlertForm from "~/Components/AlertForm";
 
 const Login = (user) => {
   const { flash } = usePage().props;

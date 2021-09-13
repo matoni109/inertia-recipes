@@ -1,11 +1,11 @@
 import React from "react";
 import { useForm, usePage } from "@inertiajs/inertia-react";
-// import AlertForm from "../../../Components/AlertForm";
+// import AlertForm from "~/Components/AlertForm";
 
 // https://github.com/react-dropzone/react-dropzone
 // https://stackoverflow.com/questions/3827011/devise-custom-routes-and-login-pages
 // https://github.com/kirill3333/react-avatar
-
+// https://medium.com/@clarkjohnson_85334/uploading-photos-into-rails-6-activestorage-from-javascript-react-file-and-camera-653de99b183f
 const New = (props) => {
   // const { flash } = usePage().props;
 
@@ -24,13 +24,10 @@ const New = (props) => {
   };
   // [event.target.id]: event.target.files[0],
   const avatarHandler = (event) => {
-    console.log(event.target.id);
     // console.log(event.target.files[0]);
     setData((values) => ({
       user: { ...values.user, [event.target.id]: event.target.files[0] },
     }));
-    console.log(data.user.avatar);
-    console.log(data.user.avatar.name);
   };
 
   function submit(e) {

@@ -1,8 +1,9 @@
 import React from "react";
 import { useForm } from "@inertiajs/inertia-react";
-import Layout from "../../../Components/Layout";
+import Layout from "~/Components/Layout";
 
 const Edit = (props) => {
+  // console.log(props.user);
   // const {
   //   props: { user, flash },
   // } = usePage();
@@ -15,6 +16,7 @@ const Edit = (props) => {
       current_password: "",
     },
   });
+
   // [:password, :password_confirmation, :current_password]
   const valuesChangedHandler = (event) => {
     setData((values) => ({
@@ -30,7 +32,7 @@ const Edit = (props) => {
   // needed for form
   //
   //
-  //
+  // https://www.nopio.com/blog/upload-files-with-rails-active-storage/
 
   return (
     <>

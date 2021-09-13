@@ -1,0 +1,28 @@
+development:
+  cloud_name: <%= Rails.application.credentials.dig(:cloudinary, :development, :cloud_name) %>
+  api_key: <%= Rails.application.credentials.dig(:cloudinary, :development, :api_key) %>
+  api_secret: <%= Rails.application.credentials.dig(:cloudinary, :development, :api_secret) %>
+  enhance_image_tag: true
+  static_file_support: false
+  secure: true
+
+production:
+  cloud_name: <%= Rails.application.credentials.dig(:cloudinary, :production, :cloud_name) %>
+  api_key: <%= Rails.application.credentials.dig(:cloudinary, :production, :api_key) %>
+  api_secret: <%= Rails.application.credentials.dig(:cloudinary, :production, :api_secret) %>
+  enhance_image_tag: true
+  static_file_support: true
+  secure: true
+
+test:
+  cloud_name: <%= Rails.application.credentials.dig(:cloudinary, :test, :cloud_name) %>
+  api_key: <%= Rails.application.credentials.dig(:cloudinary, :test, :api_key) %>
+  api_secret: <%= Rails.application.credentials.dig(:cloudinary, :test, :api_secret) %>mnk
+  enhance_image_tag: true
+  static_file_support: false
+  secure: true
+# <%= Rails.application.credentials.dig(:aws, :access_key_id) %>
+#
+# create env => rails credentials:edit --environment production
+#
+# edit env =>  EDITOR="code --wait" bin/rails credentials:edit --environment development

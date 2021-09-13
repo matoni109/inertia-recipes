@@ -1,27 +1,27 @@
 /* This example requires Tailwind CSS v2.0+ */
 import React from "react";
 import { Fragment } from "react";
-import { InertiaLink, Link } from "@inertiajs/inertia-react";
+// import { users } from "~/api/all";
+import { InertiaLink } from "@inertiajs/inertia-react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
-import { usePage } from "@inertiajs/inertia-react";
-// import { usePage } from "@inertiajs/inertia-react";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function NavBar({ user, props }) {
-  // const { csrf_token } = usePage().props;
+export default function NavBar({ data }) {
+  // const userTest = users.get({ id: 1 });
+  // console.log(data);
+
   const navigation = [
-    { name: `${user.name}' Recipes`, href: "/recipes", current: true },
+    { name: `${data.user.name}' Recipes`, href: "/recipes", current: true },
     { name: "Create Recipe", href: "/recipes/new", current: false },
     // { name: "Projects", href: "#", current: false },
     // { name: "Calendar", href: "#", current: false },
     // https://medium.com/@clarkjohnson_85334/uploading-photos-into-rails-6-activestorage-from-javascript-react-file-and-camera-653de99b183f
     // https://dev.to/racheladaw/uploading-profile-pictures-in-a-react-and-rails-api-app-part-ii-bm7
   ];
-  // console.log(csrf_token);
 
   return (
     <Disclosure as="nav" className="bg-gray-800">
@@ -118,7 +118,7 @@ export default function NavBar({ user, props }) {
                                   "block px-4 py-2 text-sm text-gray-700"
                                 )}
                               >
-                                {user.name}'s Profile
+                                {data.user.name}'s Profile
                               </InertiaLink>
                             )}
                           </Menu.Item>
