@@ -59,7 +59,7 @@ const New = (props) => {
                 <input
                   type="file"
                   id="avatar"
-                  class="shadow appearance-none  rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                  className="shadow appearance-none  rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                   // value={data.user.avatar}
                   // onChange={(e) => setData("avatar", e.target.files[0])}
                   onChange={avatarHandler}

@@ -1,7 +1,7 @@
 import React from "react";
 import { InertiaLink } from "@inertiajs/inertia-react";
 import { Inertia } from "@inertiajs/inertia";
-import { recipes } from "~/api/all";
+// import { recipes } from "~/api/all";
 import SearchFilter from "~/Components/SearchFilters";
 import AvatarCloudinary from "../Components/AvatarCloudinary";
 
@@ -9,9 +9,11 @@ const Recipe = (props) => {
   const {
     data: { user, avatar },
     recipe,
+    recipe_owner,
+    recipe_owner_avatar,
   } = props;
-  console.log(user);
-  console.log(avatar);
+  // console.log(recipe_owner_avatar);
+  // console.log(avatar.key);
   const deleteHandler = () => {
     // console.log(`/recipes/${recipe.id}`);
     // Inertia.delete(`/recipes/${recipe.id}`);
@@ -33,7 +35,7 @@ const Recipe = (props) => {
                   <span className="inline-block py-1 px-2 rounded-full bg-green-600 text-white  text-xs font-bold tracking-widest mb-2">
                     Featured Courses
                   </span>
-                  <AvatarCloudinary />
+
                   <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-100">
                     {recipe.name}
                   </h1>
@@ -49,16 +51,17 @@ const Recipe = (props) => {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center pb-12">
                       <div className="h-12 w-12">
-                        <img
+                        {/* <img
                           src="https://res.cloudinary.com/oeelsafe/image/upload/cag5oirgzrugrw647ls4fb4k30gf.jpeg"
                           className="h-full w-full object-cover overflow-hidden rounded-full"
-                        />
+                        /> */}
+                        <AvatarCloudinary userData={recipe_owner_avatar} />
                       </div>
                       <p className="text-gray-100 font-bold ml-3">
-                        {user.name}
+                        {recipe_owner.name}
                         <br />
                         <span className="text-indigo-200 text-base font-light">
-                          {user.email}
+                          {recipe_owner.email}
                         </span>
                       </p>
                     </div>

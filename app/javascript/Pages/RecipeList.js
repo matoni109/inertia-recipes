@@ -3,8 +3,8 @@ import React from "react";
 // https://daisyui.com/docs/install
 
 import Card from "../Components/Card";
-const RecipeList = ({ recipes, data, avatar }) => {
-  console.log(avatar);
+const RecipeList = ({ recipes, data }) => {
+  // console.log(avatar);
 
   return (
     <>
