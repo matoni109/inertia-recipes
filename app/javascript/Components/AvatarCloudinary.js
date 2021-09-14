@@ -4,7 +4,7 @@ import { Image, CloudinaryContext, Transformation } from "cloudinary-react";
 const AvatarCloudinary = (props) => {
   // console.log(props);
   const {
-    userData: { key, filename },
+    userData: { key },
   } = props;
 
   return (
@@ -14,7 +14,7 @@ const AvatarCloudinary = (props) => {
           cloudName="oeelsafe"
           loading="lazy"
           publicId={`${key}`}
-          alt={`avatar image of ${filename.split(".")[0]}`}
+          // alt={`avatar image of ${.split(".")[0]}`}
         >
           <Transformation
             width="100"
