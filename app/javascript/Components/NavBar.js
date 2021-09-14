@@ -13,7 +13,7 @@ function classNames(...classes) {
 
 export default function NavBar({ data }) {
   // const userTest = users.get({ id: 1 });
-  console.log(data);
+  // console.log(data);
 
   const navigation = [
     { name: `${data.user.name}' Recipes`, href: "/recipes", current: true },
