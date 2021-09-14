@@ -3,6 +3,8 @@ import { InertiaLink } from "@inertiajs/inertia-react";
 import { Inertia } from "@inertiajs/inertia";
 import { recipes } from "~/api/all";
 import SearchFilter from "~/Components/SearchFilters";
+import AvatarCloudinary from "../Components/AvatarCloudinary";
+
 const Recipe = (props) => {
   const {
     data: { user, avatar },
@@ -31,6 +33,7 @@ const Recipe = (props) => {
                   <span className="inline-block py-1 px-2 rounded-full bg-green-600 text-white  text-xs font-bold tracking-widest mb-2">
                     Featured Courses
                   </span>
+                  <AvatarCloudinary />
                   <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-100">
                     {recipe.name}
                   </h1>
