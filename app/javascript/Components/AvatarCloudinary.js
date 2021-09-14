@@ -2,10 +2,10 @@ import React from "react";
 import { Image, CloudinaryContext, Transformation } from "cloudinary-react";
 
 const AvatarCloudinary = (props) => {
-  console.log(props);
-  // const {
-  //   userData: { key },
-  // } = props;
+  // console.log(props);
+  const {
+    userData: { key, filename },
+  } = props;
 
   return (
     <>
@@ -13,9 +13,8 @@ const AvatarCloudinary = (props) => {
         <Image
           cloudName="oeelsafe"
           loading="lazy"
-          publicId="eedrm0ct34dz5pzts4tttu1anfit"
-          // publicId={`${key}`}
-          // alt={`avatar image of ${.split(".")[0]}`}
+          publicId={`${key}`}
+          alt={`avatar image of ${filename.split(".")[0]}`}
         >
           <Transformation
             width="100"
