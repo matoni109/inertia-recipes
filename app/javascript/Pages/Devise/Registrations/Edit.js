@@ -4,12 +4,11 @@ import Layout from "~/Components/Layout";
 import AvatarCloudinary from "~/Components/AvatarCloudinary";
 
 const Edit = (props) => {
-  const inputFileRef = useRef(null);
-  // console.log(props.data.avatar);
-  // const {
-  //   props: { user, flash },
-  // } = usePage();
-  const { data, setData, patch, processing, errors } = useForm({
+  const imageUploader = useRef(null);
+  const uploadedImage = useRef(null);
+  const replace = document.getElementById("avatarOriginal");
+
+  const { data, setData, patch, processing, errors, progress } = useForm({
     user: {
       avatar: null,
       name: props.user.name,
@@ -20,20 +19,20 @@ const Edit = (props) => {
     },
   });
 
-  const onFilechange = (event) => {
-    /*Selected files data can be collected here.*/
-    // console.log(event);
-    console.log(event.target.id);
-    console.log(event.target.files[0]);
-    setData((values) => ({
-      user: { ...values.user, [event.target.id]: event.target.files[0] },
-    }));
-    console.log(data.user.avatar);
+  const handleImageUpload = (e) => {
+    const [file] = e.target.files;
+    if (file) {
+      const reader = new FileReader();
+      const { current } = uploadedImage;
+      // const { current } = replace;
+      current.file = file;
+      reader.onload = (e) => {
+        current.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
   };
-  const onBtnClick = () => {
-    /*Collecting node-element and performing click*/
-    inputFileRef.current.click();
-  };
+
   // [:password, :password_confirmation, :current_password]
   const valuesChangedHandler = (event) => {
     setData((values) => ({
@@ -42,14 +41,12 @@ const Edit = (props) => {
   };
 
   const avatarHandler = (event) => {
-    // console.log(event.target.files[0]);
-    console.log(event.target.id);
-    console.log(event.target.files[0]);
+    document.getElementById("avatarOriginal").classList.add("hidden");
+
+    handleImageUpload(event);
     setData((values) => ({
       user: { ...values.user, [event.target.id]: event.target.files[0] },
     }));
-    console.log(data.user.avatar);
-    console.log(data.user);
   };
 
   function submit(e) {
@@ -85,41 +82,45 @@ const Edit = (props) => {
                 <label className="form-label">Photo:</label>
                 <div className="mt-1 flex items-center">
                   <span className="inline-block h-15 w-15 rounded-full overflow-hidden bg-gray-100">
-                    {/* <svg
-                      className="h-full w-full text-gray-300"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
-                    </svg> */}
-                    <AvatarCloudinary userData={props.data.avatar} />
+                    <div id="avatarOriginal" className="">
+                      <AvatarCloudinary userData={props.data.avatar} />
+                    </div>
+                    <img
+                      id="avatarPreview"
+                      ref={uploadedImage}
+                      className="h-15 w-15 rounded-full overflow-hidden absolute"
+                    />
                   </span>
-                  {/* <input
-                    type="file"
-                    id="avatar"
-                    className="shadow appearance-none  rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                    // value={data.user.avatar}
-                    // onChange={(e) => setData("avatar", e.target.files[0])}
-                    onChange={avatarHandler}
-                  /> */}
-                  <input
-                    type="file"
-                    id="avatar"
-                    ref={inputFileRef}
-                    // onChange={onFilechange}
-                    className=""
-                    onChange={avatarHandler}
-                  />
-                  <button id="avatarButton" onClick={onBtnClick}>
-                    Select file
-                  </button>
-                  {/* <button
+                  <span className="inline-block h-15 w-15 rounded-full overflow-hidden bg-gray-100">
+                    <img
+                      id="avatarPreview"
+                      ref={uploadedImage}
+                      className="h-15 w-15 rounded-full overflow-hidden "
+                    />
+                  </span>
+
+                  <label htmlFor="text-input-11" className="form-label">
+                    <input
+                      type="file"
+                      id="avatar"
+                      className="hidden"
+                      onChange={avatarHandler}
+                      ref={imageUploader}
+                    />
+                    {progress && (
+                      <progress value={progress.percentage} max="100">
+                        {progress.percentage}%
+                      </progress>
+                    )}
+                  </label>
+
+                  <button
                     type="button"
-                    onClick={avatarHandler}
+                    onClick={() => imageUploader.current.click()}
                     className="ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                   >
                     Change
-                  </button> */}
+                  </button>
                 </div>
               </div>
               <label htmlFor="text-input-11" className="form-label my-2">

@@ -24,10 +24,12 @@ const New = (props) => {
   };
   // [event.target.id]: event.target.files[0],
   const avatarHandler = (event) => {
-    // console.log(event.target.files[0]);
+    console.log(event.target.files[0]);
     setData((values) => ({
       user: { ...values.user, [event.target.id]: event.target.files[0] },
     }));
+    console.log(data.user.avatar);
+    console.log(data.user);
   };
 
   function submit(e) {
