@@ -51,7 +51,9 @@ const Edit = (props) => {
     e.preventDefault();
     patch("/edit");
   }
-
+  const style = {
+    height: 100,
+  };
   // needed for form
   //
   //
@@ -84,11 +86,7 @@ const Edit = (props) => {
                     </div>
                   </span>
                   <span className="inline-block h-15 w-15 rounded-full overflow-hidden bg-gray-100">
-                    <img
-                      id="avatarPreview"
-                      ref={uploadedImage}
-                      className="h-15 w-15 rounded-full overflow-hidden "
-                    />
+                    <img id="avatarPreview" ref={uploadedImage} style={style} />
                     {progress && (
                       <progress value={progress.percentage} max="100">
                         {progress.percentage}%
