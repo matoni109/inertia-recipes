@@ -6,7 +6,6 @@ import AvatarCloudinary from "~/Components/AvatarCloudinary";
 const Edit = (props) => {
   const imageUploader = useRef(null);
   const uploadedImage = useRef(null);
-  const replace = document.getElementById("avatarOriginal");
 
   const { data, setData, patch, processing, errors, progress } = useForm({
     user: {
@@ -24,7 +23,6 @@ const Edit = (props) => {
     if (file) {
       const reader = new FileReader();
       const { current } = uploadedImage;
-      // const { current } = replace;
       current.file = file;
       reader.onload = (e) => {
         current.src = e.target.result;
@@ -73,7 +71,6 @@ const Edit = (props) => {
           >
             <div className="px-10 py-12">
               <h1 className="text-center font-bold text-3xl">
-                {/* {props.title} */}
                 Edit User Registration
               </h1>
               {/* <AlertForm props={flash} /> */}
@@ -85,11 +82,6 @@ const Edit = (props) => {
                     <div id="avatarOriginal" className="">
                       <AvatarCloudinary userData={props.data.avatar} />
                     </div>
-                    <img
-                      id="avatarPreview"
-                      ref={uploadedImage}
-                      className="h-15 w-15 rounded-full overflow-hidden absolute"
-                    />
                   </span>
                   <span className="inline-block h-15 w-15 rounded-full overflow-hidden bg-gray-100">
                     <img
@@ -97,6 +89,11 @@ const Edit = (props) => {
                       ref={uploadedImage}
                       className="h-15 w-15 rounded-full overflow-hidden "
                     />
+                    {progress && (
+                      <progress value={progress.percentage} max="100">
+                        {progress.percentage}%
+                      </progress>
+                    )}
                   </span>
 
                   <label htmlFor="text-input-11" className="form-label">
@@ -107,11 +104,6 @@ const Edit = (props) => {
                       onChange={avatarHandler}
                       ref={imageUploader}
                     />
-                    {progress && (
-                      <progress value={progress.percentage} max="100">
-                        {progress.percentage}%
-                      </progress>
-                    )}
                   </label>
 
                   <button
@@ -132,14 +124,13 @@ const Edit = (props) => {
                 id="name"
                 value={data.user.name}
                 onChange={valuesChangedHandler}
-                // onChange={(e) => setData("email", e.target.value)}
               />
               {errors.name && (
                 <div className="border border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
                   <p>{errors.name}</p>
                 </div>
               )}
-              {/* Email */}
+
               <label htmlFor="text-input-11" className="form-label">
                 Email:
               </label>
@@ -149,14 +140,13 @@ const Edit = (props) => {
                 id="email"
                 value={data.user.email}
                 onChange={valuesChangedHandler}
-                // onChange={(e) => setData("email", e.target.value)}
               />
               {errors.email && (
                 <div className="border border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
                   <p>{errors.email}</p>
                 </div>
               )}
-              {/* User New Password */}
+
               <label htmlFor="user_password" className="form-label">
                 Password:
               </label>
@@ -168,7 +158,6 @@ const Edit = (props) => {
                 name="user[password]"
                 id="password"
                 value={data.password}
-                // onChange={(e) => setData("password", e.target.value)}
                 onChange={valuesChangedHandler}
               />
               {errors.password && (
@@ -176,7 +165,7 @@ const Edit = (props) => {
                   <p>{errors.password}</p>
                 </div>
               )}
-              {/* User New Password Confirmation */}
+
               <label
                 htmlFor="user_password_confirmation"
                 className="form-label"
@@ -190,7 +179,6 @@ const Edit = (props) => {
                 name="user[password_confirmation]"
                 id="password_confirmation"
                 value={data.password_confirmation}
-                // onChange={(e) => setData("password", e.target.value)}
                 onChange={valuesChangedHandler}
               />
               {errors.password_confirmation && (
@@ -199,7 +187,6 @@ const Edit = (props) => {
                 </div>
               )}
 
-              {/* User Current Password */}
               <label htmlFor="user_current_password" className="form-label">
                 Current Password:
               </label>
@@ -211,7 +198,6 @@ const Edit = (props) => {
                 name="user[current_password]"
                 id="current_password"
                 value={data.current_password}
-                // onChange={(e) => setData("password", e.target.value)}
                 onChange={valuesChangedHandler}
               />
               {errors.current_password && (
