@@ -38,6 +38,10 @@ const Edit = (props) => {
     }));
   };
 
+  const style = {
+    height: 100,
+  };
+
   const avatarHandler = (event) => {
     document.getElementById("avatarOriginal").classList.add("hidden");
 
@@ -51,9 +55,7 @@ const Edit = (props) => {
     e.preventDefault();
     patch("/edit");
   }
-  const style = {
-    height: 100,
-  };
+
   // needed for form
   //
   //
@@ -87,11 +89,6 @@ const Edit = (props) => {
                   </span>
                   <span className="inline-block h-15 w-15 rounded-full overflow-hidden bg-gray-100">
                     <img id="avatarPreview" ref={uploadedImage} style={style} />
-                    {progress && (
-                      <progress value={progress.percentage} max="100">
-                        {progress.percentage}%
-                      </progress>
-                    )}
                   </span>
 
                   <label htmlFor="text-input-11" className="form-label">
@@ -112,6 +109,17 @@ const Edit = (props) => {
                     Change
                   </button>
                 </div>
+                <span>
+                  {progress && (
+                    <progress
+                      className="my-2"
+                      value={progress.percentage}
+                      max="100"
+                    >
+                      {progress.percentage}%
+                    </progress>
+                  )}
+                </span>
               </div>
               <label htmlFor="text-input-11" className="form-label my-2">
                 Name:
