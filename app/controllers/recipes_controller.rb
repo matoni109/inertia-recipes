@@ -2,13 +2,16 @@ class RecipesController < ApplicationController
   def index
     render inertia: 'RecipeList', props: {
       recipes: current_user.recipes
+      # recipes: Recipe.all
     }
   end
 
   def show
     # /recipes/4
     render inertia: 'RecipeShow', props: {
-      recipe: Recipe.find(params[:id])
+      recipe: Recipe.find(params[:id]),
+      recipe_owner: Recipe.find(params[:id]).user,
+      recipe_owner_avatar: Recipe.find(params[:id]).user.avatar_blob
     }
   end
 

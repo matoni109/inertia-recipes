@@ -1,33 +1,52 @@
-import React from "react";
-import { useForm, usePage } from "@inertiajs/inertia-react";
-// import AlertForm from "~/Components/AlertForm";
-
+import React, { useRef } from "react";
+import { useForm } from "@inertiajs/inertia-react";
+import { Image, CloudinaryContext, Transformation } from "cloudinary-react";
 // https://github.com/react-dropzone/react-dropzone
 // https://stackoverflow.com/questions/3827011/devise-custom-routes-and-login-pages
 // https://github.com/kirill3333/react-avatar
 // https://medium.com/@clarkjohnson_85334/uploading-photos-into-rails-6-activestorage-from-javascript-react-file-and-camera-653de99b183f
 const New = (props) => {
-  // const { flash } = usePage().props;
+  const imageUploader = useRef(null);
+  const uploadedImage = useRef(null);
 
   const { data, setData, post, processing, errors, progress } = useForm({
     user: {
       email: "",
       password: "",
-      avatar: "",
+      avatar: undefined,
     },
   });
+
+  const handleImageUpload = (e) => {
+    const [file] = e.target.files;
+    if (file) {
+      const reader = new FileReader();
+      const { current } = uploadedImage;
+      current.file = file;
+      reader.onload = (e) => {
+        current.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const avatarHandler = (event) => {
+    document.getElementById("avatarOriginal").classList.add("hidden");
+
+    handleImageUpload(event);
+    setData((values) => ({
+      user: { ...values.user, [event.target.id]: event.target.files[0] },
+    }));
+  };
 
   const valuesChangedHandler = (event) => {
     setData((values) => ({
       user: { ...values.user, [event.target.id]: event.target.value },
     }));
   };
-  // [event.target.id]: event.target.files[0],
-  const avatarHandler = (event) => {
-    // console.log(event.target.files[0]);
-    setData((values) => ({
-      user: { ...values.user, [event.target.id]: event.target.files[0] },
-    }));
+
+  const style = {
+    height: 100,
   };
 
   function submit(e) {
@@ -43,6 +62,7 @@ const New = (props) => {
             height="50"
           />
           <form
+            encType="multipart/form-data"
             className="mt-8 bg-white rounded-lg shadow-xl overflow-hidden"
             onSubmit={submit}
           >
@@ -53,19 +73,72 @@ const New = (props) => {
               </h1>
               {/* <AlertForm props={props.flash} /> */}
               <div className="mx-auto mt-6 w-24 border-b-2" />
-              <input
-                type="file"
-                id="avatar"
-                // value={data.user.avatar.name}
-                // onChange={(e) => setData("avatar", e.target.files[0])}
-                onChange={avatarHandler}
-              />
-              {progress && (
-                <progress value={progress.percentage} max="100">
-                  {progress.percentage}%
-                </progress>
-              )}
-              <label htmlFor="text-input-11" className="form-label">
+              <label className="form-label">Photo:</label>
+              <div className="mt-1 flex items-center">
+                <span className="inline-block h-15 w-15 rounded-full overflow-hidden bg-gray-100">
+                  <div id="avatarOriginal" className="">
+                    <>
+                      <CloudinaryContext cloudName="dr2satryk">
+                        <Image
+                          cloudName="oeelsafe"
+                          loading="lazy"
+                          publicId={`9ixjqebuhsrx3spm6jkwx7bdzjfx`}
+                          alt={`avatar image of default`}
+                        >
+                          <Transformation
+                            width="100"
+                            height="100"
+                            crop="thumb"
+                            radius="max"
+                            fetchFormat="png"
+                            quality="auto"
+                          />
+                        </Image>
+                      </CloudinaryContext>
+                    </>
+                    {/* <img
+                      src="public/images/default.jpeg"
+                      alt="Girl in a jacket"
+                      width="100"
+                      height="100"
+                    /> */}
+                  </div>
+                </span>
+                <span className="inline-block h-15 w-15 rounded-full overflow-hidden bg-gray-100">
+                  <img id="avatarPreview" ref={uploadedImage} style={style} />
+                </span>
+
+                <label htmlFor="text-input-11" className="form-label">
+                  <input
+                    type="file"
+                    id="avatar"
+                    className="hidden"
+                    onChange={avatarHandler}
+                    ref={imageUploader}
+                  />
+                </label>
+
+                <button
+                  type="button"
+                  onClick={() => imageUploader.current.click()}
+                  className="ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                >
+                  Change
+                </button>
+              </div>
+
+              <span>
+                {progress && (
+                  <progress
+                    className="my-2"
+                    value={progress.percentage}
+                    max="100"
+                  >
+                    {progress.percentage}%
+                  </progress>
+                )}
+              </span>
+              <label htmlFor="text-input-11" className="form-label my-2">
                 Email:
               </label>
               <input
@@ -74,7 +147,6 @@ const New = (props) => {
                 id="email"
                 value={data.user.email}
                 onChange={valuesChangedHandler}
-                // onChange={(e) => setData("email", e.target.value)}
               />
               {errors.email && (
                 <div className="border border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
@@ -89,7 +161,6 @@ const New = (props) => {
                 type="password"
                 id="password"
                 value={data.password}
-                // onChange={(e) => setData("password", e.target.value)}
                 onChange={valuesChangedHandler}
               />
               {errors.password && (

@@ -124,7 +124,7 @@ const Login = (user) => {
                   Login
                 </button> */}
                 <InertiaLink
-                  className="btn-indigo"
+                  className="btn-indigo mx-1"
                   as="button"
                   type="submit"
                   href={`/new`}

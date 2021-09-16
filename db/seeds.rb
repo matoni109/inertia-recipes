@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 User.destroy_all
+Recipe.destroy_all
 # Kills all Active storage items ##
 ActiveStorage::Attachment.all.each { |attachment| attachment.purge }
 puts 'cleaning finished :)'

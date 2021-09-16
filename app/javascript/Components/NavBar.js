@@ -1,27 +1,54 @@
 /* This example requires Tailwind CSS v2.0+ */
-import React from "react";
+import React, { useState } from "react";
 import { Fragment } from "react";
 // import { users } from "~/api/all";
-import { InertiaLink } from "@inertiajs/inertia-react";
+import { InertiaLink, usePage } from "@inertiajs/inertia-react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
+import AvatarCloudinary from "../Components/AvatarCloudinary";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function NavBar({ data }) {
-  // const userTest = users.get({ id: 1 });
-  // console.log(data);
+  const { url } = usePage();
 
-  const navigation = [
-    { name: `${data.user.name}' Recipes`, href: "/recipes", current: true },
-    { name: "Create Recipe", href: "/recipes/new", current: false },
-    // { name: "Projects", href: "#", current: false },
-    // { name: "Calendar", href: "#", current: false },
-    // https://medium.com/@clarkjohnson_85334/uploading-photos-into-rails-6-activestorage-from-javascript-react-file-and-camera-653de99b183f
-    // https://dev.to/racheladaw/uploading-profile-pictures-in-a-react-and-rails-api-app-part-ii-bm7
-  ];
+  const [navigation, setNavigation] = useState([
+    {
+      name: `${data.user.name}' Recipes`,
+      href: "/recipes",
+      current: false,
+    },
+    {
+      name: "Create Recipe",
+      href: "/recipes/new",
+      current: true,
+    },
+    // {
+    //   id: "projects",
+    //   name: "Projects",
+    //   href: "#",
+    //   current: false,
+    // },
+  ]);
+  // { name: "Calendar", href: "#", current: false },
+  // https://medium.com/@clarkjohnson_85334/uploading-photos-into-rails-6-activestorage-from-javascript-react-file-and-camera-653de99b183f
+  // https://dev.to/racheladaw/uploading-profile-pictures-in-a-react-and-rails-api-app-part-ii-bm7
+
+  // const updateNavState = (event) => {
+  //   event.preventDefault();
+  //   menuIndex = navigation.findIndex((item) => item.id === event.target.id);
+  //   const copyNav = [...navigation];
+  //   copyNav.map((item) => (item.current = false));
+  //   copyNav[menuIndex].current = true;
+  //   // navigation = [];
+  //   console.log(event);
+  //   setNavigation((oldNavigation) => {
+  //     // add expense to existing arr
+  //     return [copyNav];
+  //   });
+  // };
 
   return (
     <Disclosure as="nav" className="bg-gray-800">
@@ -62,12 +89,14 @@ export default function NavBar({ data }) {
                         key={item.name}
                         href={item.href}
                         className={classNames(
-                          item.current
+                          url === `${item.href}`
                             ? "bg-gray-900 text-white"
                             : "text-gray-300 hover:bg-gray-700 hover:text-white",
                           "px-3 py-2 rounded-md text-sm font-medium"
                         )}
-                        aria-current={item.current ? "page" : undefined}
+                        aria-current={
+                          url === `${item.href}` ? "page" : undefined
+                        }
                       >
                         {item.name}
                       </InertiaLink>
@@ -88,11 +117,14 @@ export default function NavBar({ data }) {
                       <div>
                         <Menu.Button className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                           <span className="sr-only">Open user menu</span>
-                          <img
-                            className="h-8 w-8 rounded-full"
+                          {/* <img
+
                             src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                             alt=""
-                          />
+                          /> */}
+                          <div className="h-8 w-8">
+                            <AvatarCloudinary userData={data.avatar} />
+                          </div>
                         </Menu.Button>
                       </div>
                       <Transition
@@ -168,12 +200,12 @@ export default function NavBar({ data }) {
                   key={item.name}
                   href={item.href}
                   className={classNames(
-                    item.current
+                    url === `${item.href}`
                       ? "bg-gray-900 text-white"
                       : "text-gray-300 hover:bg-gray-700 hover:text-white",
                     "block px-3 py-2 rounded-md text-base font-medium"
                   )}
-                  aria-current={item.current ? "page" : undefined}
+                  aria-current={url === `${item.href}` ? "page" : undefined}
                 >
                   {item.name}
                 </InertiaLink>
