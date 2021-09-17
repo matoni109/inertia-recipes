@@ -61,6 +61,26 @@ end
 
 50.times { Recipe.create(name: Faker::Food.dish, description: Faker::Food.description, user: User.all.sample) }
 
+puts '--- Making Favourites Start !'
+
+count_fav = 0
+until count_fav == 10
+  # make_me = Favourite.new(
+  #   favorited_type: Bike,
+  #   favorited_id: Bike.pluck(:id).sample,
+  #   user_id: User.pluck(:id).sample
+  # )
+  make_me = User.where(id: User.pluck(:id).sample).first
+                .favorites.build(favoritable: Recipe.where(id: Recipe.pluck(:id).sample).first)
+  if make_me.valid?
+    make_me.save!
+    count_fav += 1
+    puts "made Favourite # #{make_me.id}"
+  else
+    puts "Fav didn't work out ..."
+  end
+end
+
 # user_array.each_with_index do |user, index|
 #   file = File.open("./db/avatars/#{index}.jpeg")
 #   make_me = User.create!(

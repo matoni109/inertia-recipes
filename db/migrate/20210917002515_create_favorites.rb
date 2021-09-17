@@ -9,6 +9,8 @@ class CreateFavorites < ActiveRecord::Migration[6.1]
     end
     add_index :favorites, :favoritable_id
     add_index :favorites, :favoritable_type
-    add_index :favorites, %i[favoritable_id favoritable_type], unique: true, name: 'allowed_one_favorite'
+    # add_index :favorites, %i[favoritable_id favoritable_type], unique: true, name: 'allowed_one_favorite'
+    add_index(:favorites, %i[user_id favoritable_type favoritable_id], unique: true,
+                                                                       name: 'allowed_one_favorite')
   end
 end

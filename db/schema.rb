@@ -49,10 +49,10 @@ ActiveRecord::Schema.define(version: 2021_09_17_002515) do
     t.bigint "favoritable_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["favoritable_id", "favoritable_type"], name: "allowed_one_favorite", unique: true
     t.index ["favoritable_id"], name: "index_favorites_on_favoritable_id"
     t.index ["favoritable_type", "favoritable_id"], name: "index_favorites_on_favoritable"
     t.index ["favoritable_type"], name: "index_favorites_on_favoritable_type"
+    t.index ["user_id", "favoritable_type", "favoritable_id"], name: "allowed_one_favorite", unique: true
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
