@@ -7,6 +7,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :recipes, dependent: :destroy
+  has_many :favorites, inverse_of: :user
 
   has_one_attached :avatar do |attachable|
     attachable.variant :thumb, resize: '100x100'
