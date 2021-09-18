@@ -64,7 +64,7 @@ end
 puts '--- Making Favourites Start !'
 
 count_fav = 0
-until count_fav == 10
+until count_fav == 25
   # make_me = Favourite.new(
   #   favorited_type: Bike,
   #   favorited_id: Bike.pluck(:id).sample,

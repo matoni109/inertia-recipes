@@ -1,11 +1,13 @@
 import React from "react";
-import { InertiaLink } from "@inertiajs/inertia-react";
+import { InertiaLink, usePage } from "@inertiajs/inertia-react";
 import { Inertia } from "@inertiajs/inertia";
 // import { recipes } from "~/api/all";
 import SearchFilter from "~/Components/SearchFilters";
 import AvatarCloudinary from "../Components/AvatarCloudinary";
 
 const Recipe = (props) => {
+  const { errors } = usePage().props;
+  console.log(errors);
   const {
     data: { user, avatar },
     recipe,
@@ -81,6 +83,21 @@ const Recipe = (props) => {
                       >
                         Delete
                       </button>
+                    </div>
+                    <div>
+                      <InertiaLink
+                        preserveScroll
+                        href="/favorites"
+                        method="post"
+                        as="button"
+                        type="button"
+                        data={{
+                          favoritable_type: "Recipe",
+                          favoritable_id: recipe.id,
+                        }}
+                      >
+                        Favourite
+                      </InertiaLink>
                     </div>
                   </div>
                 </div>
