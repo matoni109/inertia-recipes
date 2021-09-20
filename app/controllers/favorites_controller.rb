@@ -20,7 +20,6 @@ class FavoritesController < ApplicationController
     if @favorite
       @favorite.destroy
       redirect_to @favorited, alert: "#{@favorited.class.name} removed to Favorites"
-
     else
       redirect_to @favorited, alert: "#{@favorited.class.name} not in fav"
     end

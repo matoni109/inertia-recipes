@@ -1,21 +1,23 @@
-import React from "react";
-import { InertiaLink, usePage } from "@inertiajs/inertia-react";
+import React, { useState } from "react";
+import { InertiaLink, usePage, useRemember } from "@inertiajs/inertia-react";
 import { Inertia } from "@inertiajs/inertia";
 // import { recipes } from "~/api/all";
 import SearchFilter from "~/Components/SearchFilters";
 import AvatarCloudinary from "../Components/AvatarCloudinary";
 
 const Recipe = (props) => {
-  const { errors } = usePage().props;
-  console.log(errors);
   const {
     data: { user, avatar },
     recipe,
     recipe_owner,
     recipe_owner_avatar,
+    is_favorite,
   } = props;
-  // console.log(recipe_owner_avatar);
-  // console.log(avatar.key);
+  const { errors } = usePage().props;
+
+  const [favState, setFavState] = useState(is_favorite);
+  // console.log(props);
+  console.log(is_favorite);
   const deleteHandler = () => {
     // console.log(`/recipes/${recipe.id}`);
     // Inertia.delete(`/recipes/${recipe.id}`);
@@ -23,6 +25,12 @@ const Recipe = (props) => {
     Inertia.delete(`/recipes/${recipe.id}`, {
       onBefore: () => confirm("Are you sure you want to delete this user?"),
     });
+  };
+
+  const favoriteHandler = () => {
+    // setFavState(is_favorite);
+    // console.log(favState);
+    setFavState((prevCheck) => !prevCheck);
   };
 
   return (
@@ -85,7 +93,7 @@ const Recipe = (props) => {
                       </button>
                     </div>
                     <div>
-                      <InertiaLink
+                      {/* <InertiaLink
                         preserveScroll
                         href="/favorites"
                         method="post"
@@ -97,9 +105,26 @@ const Recipe = (props) => {
                         }}
                       >
                         Favourite
+                      </InertiaLink> */}
+                      <InertiaLink
+                        className="h-10 px-5 text-indigo-700 transition-colors duration-150 border border-indigo-500 rounded-lg focus:shadow-outline hover:bg-indigo-500 hover:text-indigo-100"
+                        preserveScroll
+                        href={
+                          favState ? `/favorites/${recipe.id}` : "/favorites"
+                        }
+                        method={favState ? "delete" : "post"}
+                        as="button"
+                        type="button"
+                        onClick={favoriteHandler}
+                        data={{
+                          favoritable_type: "Recipe",
+                          favoritable_id: recipe.id,
+                        }}
+                      >
+                        {favState ? "Remove Favourite" : "Favorite"}
                       </InertiaLink>
                     </div>
-                    <div>
+                    {/* <div>
                       <InertiaLink
                         preserveScroll
                         href={`/favorites/${recipe.id}`}
@@ -113,7 +138,7 @@ const Recipe = (props) => {
                       >
                         Destroy
                       </InertiaLink>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>
