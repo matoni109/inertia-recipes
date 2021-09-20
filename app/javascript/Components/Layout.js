@@ -21,7 +21,8 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      {flash.alert || (flash.success && <Alert flash={flash} />)}
+      {(flash.alert && <Alert flash={flash} />) ||
+        (flash.success && <Alert flash={flash} />)}
       <NavBar data={data} />
       {children}
       <Footer />

@@ -1,21 +1,28 @@
 class FavoritesController < ApplicationController
   before_action :find_favorite
 
-  # def new
-  #   https://api.rubyonrails.org/classes/ActionController/Redirecting.html#method-i-redirect_to
-  # end
-
   def create
     # raise
     # @favorite = @favoriter.comments.create(params[:comments])
-    @favorite = current_user.favorites.create(favoritable: @favoriter)
+    @favorite = current_user.favorites.create(favoritable: @favorited)
     # @favorite = current_user.favorites.create favorite_params
-    # raise
 
     if @favorite.persisted?
-      redirect_to @favoriter, notice: "#{@favoriter.name} added to Favorites"
+      redirect_to @favorited, notice: "#{@favorited.class.name} added to Favorites"
     else
-      redirect_to @favoriter, inertia: { errors: @favorite.errors }
+      redirect_to @favorited, inertia: { errors: @favorite.errors }
+    end
+  end
+
+  def destroy
+    @favorite = current_user.favorites.find_by(favorite_params)
+    # raise
+    if @favorite
+      @favorite.destroy
+      redirect_to @favorited, alert: "#{@favorited.class.name} removed to Favorites"
+
+    else
+      redirect_to @favorited, alert: "#{@favorited.class.name} not in fav"
     end
   end
 
@@ -23,7 +30,7 @@ class FavoritesController < ApplicationController
 
   def find_favorite
     @klass = params[:favoritable_type].capitalize.constantize
-    @favoriter = @klass.find(params[:favoritable_id])
+    @favorited = @klass.find(params[:favoritable_id])
   end
 
   def favorite_params

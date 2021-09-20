@@ -3,7 +3,7 @@ import React, { useState } from "react";
 
 const FormEdit = (props) => {
   const { errors } = usePage().props;
-
+  console.log(errors);
   // if (errors) {
   //   console.log(errors);
   //   // console.log(errors.name[0]);
@@ -43,7 +43,7 @@ const FormEdit = (props) => {
       name: values.name,
       description: values.description,
     };
-    console.log(recipeData);
+    // console.log(recipeData);
     // if (userData.age > 0 && userData.title !== "") {
     // if (
     //   enteredUserName.trim().length === 0 ||

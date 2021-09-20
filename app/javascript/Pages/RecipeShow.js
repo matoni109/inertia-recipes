@@ -99,6 +99,21 @@ const Recipe = (props) => {
                         Favourite
                       </InertiaLink>
                     </div>
+                    <div>
+                      <InertiaLink
+                        preserveScroll
+                        href={`/favorites/${recipe.id}`}
+                        method="delete"
+                        as="button"
+                        type="button"
+                        data={{
+                          favoritable_type: "Recipe",
+                          favoritable_id: recipe.id,
+                        }}
+                      >
+                        Destroy
+                      </InertiaLink>
+                    </div>
                   </div>
                 </div>
               </div>
