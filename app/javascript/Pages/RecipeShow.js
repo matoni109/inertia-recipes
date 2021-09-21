@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { InertiaLink, usePage, useRemember } from "@inertiajs/inertia-react";
+import { InertiaLink, usePage } from "@inertiajs/inertia-react";
 import { Inertia } from "@inertiajs/inertia";
 // import { recipes } from "~/api/all";
-import SearchFilter from "~/Components/SearchFilters";
-import AvatarCloudinary from "../Components/AvatarCloudinary";
+// import SearchFilter from "~/Components/SearchFilters";
+import AvatarCloudinary from "~/Components/AvatarCloudinary";
+import FavoritedRecipe from "~/Components/FavoriteRecipe";
 
 const Recipe = (props) => {
   const {
@@ -17,7 +18,7 @@ const Recipe = (props) => {
 
   const [favState, setFavState] = useState(is_favorite);
   // console.log(props);
-  console.log(is_favorite);
+  // console.log(is_favorite);
   const deleteHandler = () => {
     // console.log(`/recipes/${recipe.id}`);
     // Inertia.delete(`/recipes/${recipe.id}`);
@@ -42,9 +43,10 @@ const Recipe = (props) => {
             <figure className="visible">
               <div className="">
                 <div className="pt-10 px-2 sm:px-6">
-                  <span className="inline-block py-1 px-2 rounded-full bg-green-600 text-white  text-xs font-bold tracking-widest mb-2">
+                  {/* <span className="inline-block py-1 px-2 rounded-full bg-green-600 text-white  text-xs font-bold tracking-widest mb-2">
                     Featured Courses
-                  </span>
+                  </span> */}
+                  {favState && <FavoritedRecipe />}
 
                   <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-100">
                     {recipe.name}
@@ -121,7 +123,7 @@ const Recipe = (props) => {
                           favoritable_id: recipe.id,
                         }}
                       >
-                        {favState ? "Remove Favourite" : "Favorite"}
+                        {favState ? "Favorited" : "Favorite"}
                       </InertiaLink>
                     </div>
                     {/* <div>

@@ -21,3 +21,4 @@ end
 #  Favorite.includes(:favoritable).map(&:favoritable_id)
 #  https://veelenga.github.io/joining-polymorphic-associations/
 #  Favorite.joins(:user).where(favoritable_type: "Recipe").map(&:favoritable_id)
+# https://www.ordinarycoders.com/blog/article/17-tailwindcss-cards

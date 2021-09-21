@@ -3,8 +3,12 @@ import React from "react";
 // https://daisyui.com/docs/install
 
 import Card from "../Components/Card";
-const RecipeList = ({ recipes, data }) => {
-  // console.log(avatar);
+const RecipeList = ({ recipes, data, favList }) => {
+  console.log(favList);
+
+  const recipeIsFavourite = (favList) => {
+    return favList.includes(2);
+  };
 
   return (
     <>
@@ -26,7 +30,11 @@ const RecipeList = ({ recipes, data }) => {
 
       <div className="p-5 grid gap-4 gap-y-8 md:grid-cols-2 lg:grid-cols-3 mb-16">
         {recipes.map((recipe) => (
-          <Card props={recipe} key={recipe.id} />
+          <Card
+            props={recipe}
+            key={recipe.id}
+            isFave={favList.includes(Number(recipe.id))}
+          />
         ))}
       </div>
     </>

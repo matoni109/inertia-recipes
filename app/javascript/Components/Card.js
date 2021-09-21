@@ -1,12 +1,17 @@
 import React from "react";
 import { InertiaLink } from "@inertiajs/inertia-react";
+import FavoritedRecipe from "./FavoriteRecipe";
 
 const Card = (props) => {
-  // console.log(props.props.name);
+  // console.log(props.isFave);
   return (
     <div>
       <div className="bg-white rounded-md overflow-hidden relative shadow-md">
         <div>
+          <div className="absolute top-0 right-0 text-white hover:text-red-light mr-4 mt-4 ">
+            {props.isFave && <FavoritedRecipe />}
+          </div>
+
           <img
             className="w-full"
             src="https://lorempixel.com/640/360/food/"
