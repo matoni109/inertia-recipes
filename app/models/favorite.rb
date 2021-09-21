@@ -2,7 +2,7 @@ class Favorite < ApplicationRecord
   belongs_to :favoritable, polymorphic: true
   belongs_to :user, inverse_of: :favorites
 
-  # vales
+  # vals
   validates :user_id, uniqueness: {
     scope: %i[favoritable_id favoritable_type],
     message: 'can only favorite an item once'
@@ -19,5 +19,5 @@ end
 #  Favorite.last.user.recipes.ids
 #
 #  Favorite.includes(:favoritable).map(&:favoritable_id)
-#
-# Favorite.joins(:user).where(favoritable_type: "Recipe").map(&:favoritable_id)
+#  https://veelenga.github.io/joining-polymorphic-associations/
+#  Favorite.joins(:user).where(favoritable_type: "Recipe").map(&:favoritable_id)
