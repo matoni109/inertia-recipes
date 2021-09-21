@@ -10,10 +10,7 @@ class RecipesController < ApplicationController
     # /recipes/4
     # raise
     render inertia: 'RecipeShow', props: {
-      # is_favorite: current_user.favorites.recipes.ids.include?(params[:id]),
-      is_favorite: current_user.favorites.recipes.map do |recipe|
-                     [] << recipe.favoritable_id
-                   end.flatten.include?(params[:id].to_i),
+      is_favorite: current_user.favorites.recipe_ids.include?(params[:id].to_i),
       recipe: Recipe.find(params[:id]),
       recipe_owner: Recipe.find(params[:id]).user,
       recipe_owner_avatar: Recipe.find(params[:id]).user.avatar_blob
