@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
 
   include InertiaCsrf
   include InertiaFlash
+  # include Inertiable
   # user lamba gives current user
   # avatar_blob
   # avatar_attachment

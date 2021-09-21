@@ -1,14 +1,25 @@
 class RecipesController < ApplicationController
   def index
     render inertia: 'RecipeList', props: {
-      recipes: current_user.recipes
+      recipes: current_user.recipes,
+      favList: current_user.favorites.recipe_ids
+      # recipes: Recipe.all
+    }
+  end
+
+  def favorites
+    render inertia: 'RecipeList', props: {
+      recipes: Recipe.all.where(id: current_user.favorites.recipe_ids),
+      favList: current_user.favorites.recipe_ids
       # recipes: Recipe.all
     }
   end
 
   def show
     # /recipes/4
+    #
     render inertia: 'RecipeShow', props: {
+      is_favorite: current_user.favorites.recipe_ids.include?(params[:id].to_i),
       recipe: Recipe.find(params[:id]),
       recipe_owner: Recipe.find(params[:id]).user,
       recipe_owner_avatar: Recipe.find(params[:id]).user.avatar_blob

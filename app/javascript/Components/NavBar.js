@@ -25,12 +25,11 @@ export default function NavBar({ data }) {
       href: "/recipes/new",
       current: true,
     },
-    // {
-    //   id: "projects",
-    //   name: "Projects",
-    //   href: "#",
-    //   current: false,
-    // },
+    {
+      name: "Favorite Recipes",
+      href: "/recipe/favorites",
+      current: false,
+    },
   ]);
   // { name: "Calendar", href: "#", current: false },
   // https://medium.com/@clarkjohnson_85334/uploading-photos-into-rails-6-activestorage-from-javascript-react-file-and-camera-653de99b183f
