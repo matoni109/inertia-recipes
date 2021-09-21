@@ -10,8 +10,14 @@ class Favorite < ApplicationRecord
 
   # scopes
   scope :recipes, -> { where(favoritable_type: 'Recipe') }
+  scope :recipe_ids, -> { where(favoritable_type: 'Recipe').map(&:favoritable_id) }
 end
 
 #  @user.favorites << Favorite.new(favoritable: Recipe.find(151))
 #  @user.favorites.recipes
 #  @user.favorites.build(favoritable: Recipe.find(152))
+#  Favorite.last.user.recipes.ids
+#
+#  Favorite.includes(:favoritable).map(&:favoritable_id)
+#
+# Favorite.joins(:user).where(favoritable_type: "Recipe").map(&:favoritable_id)
