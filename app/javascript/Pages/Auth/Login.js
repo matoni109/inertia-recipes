@@ -62,7 +62,7 @@ const Login = (user) => {
                   Email:
                 </label>
                 <input
-                  className="shadow appearance-none  rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                  className="shadow appearance-none rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                   label="Email"
                   type="email"
                   autoFocus
@@ -101,14 +101,7 @@ const Login = (user) => {
                   <span className="text-sm">Remember Me</span>
                 </label>
               </div>
-              <div className="px-10 py-4 bg-gray-100 border-t border-gray-200 flex justify-between items-center">
-                <a
-                  className="hover:underline"
-                  tabIndex="-1"
-                  href="#reset-password"
-                >
-                  Forgot password?
-                </a>
+              <div className="flex px-10 py-4 bg-gray-100 border-t border-gray-200 items-center flex-wrap">
                 <button
                   className="btn-indigo"
                   onClick={submitHandler}
@@ -131,6 +124,13 @@ const Login = (user) => {
                 >
                   Sign Up
                 </InertiaLink>
+                <a
+                  className="mx-1 hover:underline"
+                  tabIndex="-1"
+                  href="#reset-password"
+                >
+                  Forgot password?
+                </a>
               </div>
             </form>
           </div>
