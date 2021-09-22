@@ -125,7 +125,7 @@ const Login = (user) => {
                   Sign Up
                 </InertiaLink>
                 <a
-                  className="mx-1 hover:underline"
+                  className="mt-1 mx-1 hover:underline"
                   tabIndex="-1"
                   href="#reset-password"
                 >
