@@ -42,7 +42,7 @@ const Recipe = (props) => {
           <div className="mx-auto lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center">
             <figure className="visible">
               <div className="">
-                <div className="pt-10 px-2 sm:px-6">
+                <div className="pt-10 px-2 sm:px-2">
                   {/* <span className="inline-block py-1 px-2 rounded-full bg-green-600 text-white  text-xs font-bold tracking-widest mb-2">
                     Featured Courses
                   </span> */}
@@ -78,10 +78,10 @@ const Recipe = (props) => {
                       </p>
                     </div>
                   </div>
-                  <div className="flex justify-end space-x-4 p-5 pb-12">
+                  <div className="flex flex-wrap">
                     <div>
                       <InertiaLink href={`/recipes/${recipe.id}/edit`}>
-                        <button className="h-10 px-5 text-indigo-700 transition-colors duration-150 border border-indigo-500 rounded-lg focus:shadow-outline hover:bg-indigo-500 hover:text-indigo-100">
+                        <button className="h-10 mb-3 px-5 mr-3 text-indigo-700 transition-colors duration-150 border border-indigo-500 rounded-lg focus:shadow-outline hover:bg-indigo-500 hover:text-indigo-100">
                           Edit
                         </button>
                       </InertiaLink>
@@ -89,7 +89,7 @@ const Recipe = (props) => {
                     <div>
                       <button
                         onClick={deleteHandler}
-                        className="h-10 px-5 text-indigo-700 transition-colors duration-150 border border-indigo-500 rounded-lg focus:shadow-outline hover:bg-indigo-500 hover:text-indigo-100"
+                        className="h-10 mr-3 px-5 text-indigo-700 transition-colors duration-150 border border-indigo-500 rounded-lg focus:shadow-outline hover:bg-indigo-500 hover:text-indigo-100"
                       >
                         Delete
                       </button>
