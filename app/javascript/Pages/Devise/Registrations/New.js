@@ -82,7 +82,7 @@ const New = (props) => {
                         <Image
                           cloudName="oeelsafe"
                           loading="lazy"
-                          publicId={`9ixjqebuhsrx3spm6jkwx7bdzjfx`}
+                          publicId={`default_aeza3u`}
                           alt={`avatar image of default`}
                         >
                           <Transformation
