@@ -17,6 +17,7 @@ const Recipe = (props) => {
   const { errors } = usePage().props;
 
   const [favState, setFavState] = useState(is_favorite);
+  const [commentState, setCommentState] = useState(false);
   // console.log(props);
   // console.log(is_favorite);
   const deleteHandler = () => {
@@ -32,6 +33,12 @@ const Recipe = (props) => {
     // setFavState(is_favorite);
     // console.log(favState);
     setFavState((prevCheck) => !prevCheck);
+  };
+
+  const commentHandler = () => {
+    // setFavState(is_favorite);
+    // console.log(favState);
+    setCommentState((prevCheck) => !prevCheck);
   };
 
   return (
@@ -95,21 +102,8 @@ const Recipe = (props) => {
                       </button>
                     </div>
                     <div>
-                      {/* <InertiaLink
-                        preserveScroll
-                        href="/favorites"
-                        method="post"
-                        as="button"
-                        type="button"
-                        data={{
-                          favoritable_type: "Recipe",
-                          favoritable_id: recipe.id,
-                        }}
-                      >
-                        Favourite
-                      </InertiaLink> */}
                       <InertiaLink
-                        className="h-10 px-5 text-indigo-700 transition-colors duration-150 border border-indigo-500 rounded-lg focus:shadow-outline hover:bg-indigo-500 hover:text-indigo-100"
+                        className="h-10 mr-3 px-5 text-indigo-700 transition-colors duration-150 border border-indigo-500 rounded-lg focus:shadow-outline hover:bg-indigo-500 hover:text-indigo-100"
                         preserveScroll
                         href={
                           favState ? `/favorites/${recipe.id}` : "/favorites"
@@ -126,21 +120,14 @@ const Recipe = (props) => {
                         {favState ? "Favorited" : "Favorite"}
                       </InertiaLink>
                     </div>
-                    {/* <div>
-                      <InertiaLink
-                        preserveScroll
-                        href={`/favorites/${recipe.id}`}
-                        method="delete"
-                        as="button"
-                        type="button"
-                        data={{
-                          favoritable_type: "Recipe",
-                          favoritable_id: recipe.id,
-                        }}
+                    <div>
+                      <button
+                        onClick={commentHandler}
+                        className="h-10 mr-3 px-5 text-indigo-700 transition-colors duration-150 border border-indigo-500 rounded-lg focus:shadow-outline hover:bg-indigo-500 hover:text-indigo-100"
                       >
-                        Destroy
-                      </InertiaLink>
-                    </div> */}
+                        {commentState ? "Comments Show" : "Comments Off"}
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
