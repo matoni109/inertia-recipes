@@ -5,6 +5,7 @@ import { Inertia } from "@inertiajs/inertia";
 // import SearchFilter from "~/Components/SearchFilters";
 import AvatarCloudinary from "~/Components/AvatarCloudinary";
 import FavoritedRecipe from "~/Components/FavoriteRecipe";
+import AddComment from "../Components/Comments/AddComment";
 
 const Recipe = (props) => {
   const {
@@ -141,6 +142,9 @@ const Recipe = (props) => {
           </div>
         </div>
       </section>
+      {/* <--- Put comment seciont here --->  */}
+      <AddComment props={props} />
+      {/* <--- Put comment seciont here --->  */}
     </>
   );
 };

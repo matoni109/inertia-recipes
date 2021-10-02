@@ -4,6 +4,6 @@ class Recipes::CommentsController < CommentsController
   private
 
   def set_commentable
-    @commentable = Recipe.find(params[:post_id])
+    @commentable = Recipe.find(params[:recipe_id])
   end
 end
