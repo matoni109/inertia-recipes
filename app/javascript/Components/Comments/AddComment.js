@@ -47,7 +47,7 @@ const AddComment = (props) => {
     console.log(event);
     // need to check if there is a parent_id here
     event.preventDefault();
-    post(`${url}/comments`);
+    post(`${url}/comments`, { preserveScroll: true });
 
     setData((values) => ({
       comment: { ...values.comment, body: "" },
@@ -73,6 +73,7 @@ const AddComment = (props) => {
             type="text"
             placeholder="Jon Snow"
             // onChange={(e) => setUsername(e.target.value)}
+            value={user.name}
           />
         </div>
         <div className="mb-4">
