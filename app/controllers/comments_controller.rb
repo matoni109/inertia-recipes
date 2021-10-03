@@ -4,6 +4,7 @@ class CommentsController < ApplicationController
   # https://codesandbox.io/s/llmk22kz19?file=/src/Comments.jsx
   # https://codesandbox.io/s/use-comments-demo-tailwind-pvhgw?file=/src/index.js
   # https://www.commont.app/docs
+  # https://codesandbox.io/s/commont-react-theme-ui-pagination-o4tg8?file=/src/App.tsx:1541-1550
 
   def create
     @comment = @commentable.comments.new(comment_params)

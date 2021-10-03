@@ -3,39 +3,40 @@ import { useForm, InertiaLink, usePage } from "@inertiajs/inertia-react";
 
 const AddComment = (props) => {
   const { url } = usePage();
-  console.log(props);
+  const {
+    data: { user, avatar },
+    recipe,
+  } = props.props;
 
-  console.log(url);
+  const findCommentable = (url) => {
+    // const url = "/recipes/457";
+    const urlOnSplit = url.split("/").slice(1);
+    const commentableType = urlOnSplit[0].replace(/s$/g, "");
+    const capitalizeFirstChar = (str) =>
+      str.charAt(0).toUpperCase() + str.substring(1);
+
+    const commentableObject = {
+      commentableType: capitalizeFirstChar(commentableType),
+      commentableId: parseFloat(urlOnSplit[1]),
+    };
+
+    return commentableObject;
+  };
+  // console.log(props.props);
 
   const { data, setData, post, processing, errors } = useForm({
     comment: {
       body: "",
       parent_id: undefined, // nill or above comment ??
-      commentable_type: findCommentableType(url), // use url to get this Recipe
-      commentable_id: undefined, // could use above also ??
-      user_id: undefined, // user.id
+      commentable_type: findCommentable(url).commentableType, // use url to get this Recipe
+      commentable_id: findCommentable(url).commentableId, // could use above also ??
+      user_id: user.id, // user.id
     },
   });
-  //  user_id: nil,
-  //  commentable_type: nil,
-  //  commentable_id: nil,
-  //  parent_id: nil,
-  //  body: nil,
 
   // const [username, setUsername] = useState("");
   // const [comment, setComment] = useState("");
 
-  const findCommentableType = (url) => {
-    // const url = "/recipes/457";
-    const urlOnSplit = url.split("/").slice(1);
-    const commentableType = urlOnSplit[0].replace(/s$/g, "");
-
-    const capitalizeFirstChar = (str) =>
-      str.charAt(0).toUpperCase() + str.substring(1);
-
-    console.log(capitalizeFirstChar(commentableType));
-    return capitalizeFirstChar(commentableType);
-  };
   const valuesChangedHandler = (event) => {
     setData((values) => ({
       comment: { ...values.comment, [event.target.id]: event.target.value },
@@ -43,12 +44,14 @@ const AddComment = (props) => {
   };
 
   const submitHandler = (event) => {
-    console.log("ya");
+    console.log(event);
     // need to check if there is a parent_id here
-    e.preventDefault();
-    post("/new");
-    // url == /recipes/457
-    // POST   /recipes/:recipe_id/comments(.:format)
+    event.preventDefault();
+    post(`${url}/comments`);
+
+    setData((values) => ({
+      comment: { ...values.comment, body: "" },
+    }));
   };
 
   return (
@@ -85,8 +88,8 @@ const AddComment = (props) => {
             className="font-sans shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             rows={2}
             placeholder="Tell me what you think 😊"
-            // value={comment}
-            // onChange={(e) => setComment(e.target.value)}
+            value={data.comment.body}
+            onChange={valuesChangedHandler}
           />
         </div>
         <div className="flex items-center justify-between">
