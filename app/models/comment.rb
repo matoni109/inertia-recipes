@@ -5,12 +5,15 @@ class Comment < ApplicationRecord
   ## below might be optional ??
   has_many :replies, class_name: 'Comment', foreign_key: :parent_id, dependent: :destroy
 
+  ## validations :
+  validates :body, length: { minimum: 2, too_short: '%{count} characters is the minimum allowed' }
+
   def comments
     Comment.where(commentable: commentable, parent_id: id)
   end
 
   def destroy
-    update(user: nil, body: nil)
+    update(user: nil, body: 'comment deleted by user')
   end
 
   def deleted?

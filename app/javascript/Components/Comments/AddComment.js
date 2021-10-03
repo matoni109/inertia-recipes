@@ -24,7 +24,7 @@ const AddComment = (props) => {
   };
   // console.log(props.props);
 
-  const { data, setData, post, processing, errors } = useForm({
+  const { data, setData, post, errors } = useForm({
     comment: {
       body: "",
       parent_id: undefined, // nill or above comment ??
@@ -36,15 +36,16 @@ const AddComment = (props) => {
 
   // const [username, setUsername] = useState("");
   // const [comment, setComment] = useState("");
-
+  // console.log(errors);
   const valuesChangedHandler = (event) => {
+    errors.body = false;
     setData((values) => ({
       comment: { ...values.comment, [event.target.id]: event.target.value },
     }));
   };
 
   const submitHandler = (event) => {
-    console.log(event);
+    // console.log(event);
     // need to check if there is a parent_id here
     event.preventDefault();
     post(`${url}/comments`, { preserveScroll: true });
@@ -73,7 +74,7 @@ const AddComment = (props) => {
             type="text"
             placeholder="Jon Snow"
             // onChange={(e) => setUsername(e.target.value)}
-            value={user.name}
+            defaultValue={user.name}
           />
         </div>
         <div className="mb-4">
@@ -92,6 +93,11 @@ const AddComment = (props) => {
             value={data.comment.body}
             onChange={valuesChangedHandler}
           />
+          {errors.body && (
+            <div className="border border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
+              <p>{errors.body}</p>
+            </div>
+          )}
         </div>
         <div className="flex items-center justify-between">
           <button

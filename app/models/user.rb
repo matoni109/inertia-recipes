@@ -8,7 +8,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :recipes, dependent: :destroy
-  has_many :favorites, inverse_of: :user
+  has_many :favorites, inverse_of: :user, dependent: :destroy
+  has_many :comments, dependent: :nullify
 
   has_one_attached :avatar do |attachable|
     attachable.variant :thumb, resize: '100x100'
@@ -30,3 +31,12 @@ class User < ApplicationRecord
     end
   end
 end
+
+# begin
+#   person = User.first
+#   person.destroy! #=> Note the exclamation mark which will cause an error if it fails
+# rescue ActiveRecord::RecordNotDestroyed => error
+#   puts "errors that prevented destruction: #{error.record}"
+# end
+
+# https://github.com/jenseng/immigrant/issues/31

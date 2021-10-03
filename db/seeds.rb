@@ -1,12 +1,12 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
-# Examples:
-# require faker
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+
+Comment.destroy_all
 User.destroy_all
+Favorite.destroy_all
 Recipe.destroy_all
+
 # Kills all Active storage items ##
 ActiveStorage::Attachment.all.each { |attachment| attachment.purge }
 puts 'cleaning finished :)'
@@ -79,19 +79,50 @@ until count_fav == 25
   else
     puts "Fav didn't work out ..."
   end
-end
 
-# user_array.each_with_index do |user, index|
-#   file = File.open("./db/avatars/#{index}.jpeg")
-#   make_me = User.create!(
-#     first_name: user[:first_name],
-#     last_name: user[:last_name],
-#     email: user[:email],
-#     password: '123456',
-#     password_confirmation: '123456',
-#     terms_of_service: true,
-#     admin: false
-#   )
-#   make_me.avatar.attach(io: file, filename: "#{make_me.first_name}.jpeg", content_type: 'image/jpg')
-#   puts "made #{make_me.first_name} #{make_me.last_name}"
-# end
+end
+## comment generator
+# each Recipe
+Recipe.all.each do |recipe|
+  comment_one = Comment.create!(
+    body: Faker::Quote.unique.yoda,
+    parent_id: nil,
+    commentable_type: 'Recipe',
+    commentable_id: recipe.id,
+    user_id: recipe.user_id
+  )
+  puts recipe.name.to_s
+  puts "made Comment # #{comment_one.id}"
+  user_id_array = User.all.ids.delete_if { |n| n == recipe.user_id }
+
+  comment_two = Comment.create!(
+    body: Faker::Quote.robin,
+    parent_id: nil,
+    commentable_type: 'Recipe',
+    commentable_id: recipe.id,
+    user_id: user_id_array.sample
+  )
+  puts "made Comment # #{comment_two.id}"
+  user_id_array_comment_2 = user_id_array.delete_if { |n| n == comment_two.user_id }
+
+  comment_two_b = Comment.create!(
+    body: Faker::Quote.unique.most_interesting_man_in_the_world,
+    parent_id: comment_two.id,
+    commentable_type: 'Recipe',
+    commentable_id: recipe.id,
+    user_id: user_id_array_comment_2.sample
+  )
+  puts "made Comment # #{comment_two_b.id}"
+  user_id_array_comment_2b = user_id_array.delete_if { |n| n == comment_two_b.user_id }
+
+  comment_two_c = Comment.create!(
+    body: Faker::Quote.unique.most_interesting_man_in_the_world,
+    parent_id: comment_two_b.id,
+    commentable_type: 'Recipe',
+    commentable_id: recipe.id,
+    user_id: user_id_array_comment_2b.sample
+  )
+  puts "made Comment # #{comment_two_c.id}"
+
+  Faker::UniqueGenerator.clear # Clears used values for all generators
+end
