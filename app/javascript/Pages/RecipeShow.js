@@ -6,14 +6,18 @@ import { Inertia } from "@inertiajs/inertia";
 import AvatarCloudinary from "~/Components/AvatarCloudinary";
 import FavoritedRecipe from "~/Components/FavoriteRecipe";
 import AddComment from "../Components/Comments/AddComment";
+import Comment from "../Components/Comments/Comment";
+import CommentsSection from "../Components/Comments/CommentsSection";
 
 const Recipe = (props) => {
+  // console.log(props);
   const {
     data: { user, avatar },
     recipe,
     recipe_owner,
     recipe_owner_avatar,
     is_favorite,
+    comments,
   } = props;
   const { errors } = usePage().props;
 
@@ -143,7 +147,9 @@ const Recipe = (props) => {
         </div>
       </section>
       {/* <--- Put comment seciont here --->  */}
-      <AddComment props={props} />
+      <CommentsSection props={props} />
+      {/* <Comment props={props} /> */}
+      {/* <AddComment props={props} /> */}
       {/* <--- Put comment seciont here --->  */}
     </>
   );

@@ -1,7 +1,6 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
-
 Comment.destroy_all
 User.destroy_all
 Favorite.destroy_all
@@ -84,6 +83,7 @@ end
 ## comment generator
 # each Recipe
 Recipe.all.each do |recipe|
+  ## one
   comment_one = Comment.create!(
     body: Faker::Quote.unique.yoda,
     parent_id: nil,
@@ -95,6 +95,7 @@ Recipe.all.each do |recipe|
   puts "made Comment # #{comment_one.id}"
   user_id_array = User.all.ids.delete_if { |n| n == recipe.user_id }
 
+  ## two
   comment_two = Comment.create!(
     body: Faker::Quote.robin,
     parent_id: nil,
@@ -105,6 +106,7 @@ Recipe.all.each do |recipe|
   puts "made Comment # #{comment_two.id}"
   user_id_array_comment_2 = user_id_array.delete_if { |n| n == comment_two.user_id }
 
+  ## two ii
   comment_two_b = Comment.create!(
     body: Faker::Quote.unique.most_interesting_man_in_the_world,
     parent_id: comment_two.id,
@@ -115,6 +117,17 @@ Recipe.all.each do |recipe|
   puts "made Comment # #{comment_two_b.id}"
   user_id_array_comment_2b = user_id_array.delete_if { |n| n == comment_two_b.user_id }
 
+  ## three i
+  comment_two_d = Comment.create!(
+    body: Faker::Quote.unique.most_interesting_man_in_the_world,
+    parent_id: comment_two.id,
+    commentable_type: 'Recipe',
+    commentable_id: recipe.id,
+    user_id: user_id_array_comment_2.sample
+  )
+  puts "made Comment # #{comment_two_d.id}"
+
+  ## two iii
   comment_two_c = Comment.create!(
     body: Faker::Quote.unique.most_interesting_man_in_the_world,
     parent_id: comment_two_b.id,
