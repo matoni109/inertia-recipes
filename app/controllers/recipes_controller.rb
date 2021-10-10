@@ -78,64 +78,27 @@ class RecipesController < ApplicationController
   def render_comments
     @recipe = current_user.recipes.find(params[:id])
     @comments = @recipe.comments ## all of them
+  end
 
-    # @comments.where(parent_id: nil).map do |parent|
-    #   byebug
-    #   parent.replies
-    #   # parent_array = []
-    #   # parent_array << parent.as_json
+  def comments_for(parent_id, comments)
+    comments
+      .filter { |comment| comment[:parent_id] == parent_id }
+      .map do |comment|
+        [comment] | comments_for(comment[:id], comments)
+        # above same as
+        #
+        # arr = []
+        # arr << comment
+        # arr << comments_for(comment[:id], comments)
+      end
+  end
 
-    #   # parent_array.filter_map do |element|
-    #   #   # element is a hash
-    #   #   pp element
-    #   #   byebug
-    #   # element << @comments.select { |childen| element['id'] == childen.parent_id }.as_json
-    # end
+  def render_comments_using_recursive
+    @recipe = current_user.recipes.find(params[:id])
+    @comments = @recipe.comments ## all of them
+
+    @comments.where(parent_id: nil).map { |parent| [parent] }.map do |parent|
+      [parent] | comments_for(parent.first.id, @comments).delete_if(&:blank?)
+    end
   end
 end
-
-# [ # <Comment:0x000055e34e0b9230
-#   [{ id: 852,
-#      user_id: 17,
-#      commentable_type: 'Recipe',
-#      commentable_id: 201,
-#      parent_id: nil,
-#      body: 'Difficult to see. Always in motion is the future...' }],
-
-#   [{
-#     # <Comment:0x000055e34e0b9050
-#     id: 853,
-#     user_id: 20,
-#     commentable_type: 'Recipe',
-#     commentable_id: 201,
-#     parent_id: nil,
-#     body: 'Holy Olfactory'
-#   },
-#    {
-#      # <Comment:0x000055e34e0b8ab0
-#      id: 856,
-#      user_id: 19,
-#      commentable_type: 'Recipe',
-#      commentable_id: 201,
-#      parent_id: 853,
-#      body: 'Cars look both ways for him, before driving down a street'
-#    },
-#    {
-#      # <Comment:0x000055e34e0b8e70
-#      id: 854,
-#      user_id: 18,
-#      commentable_type: 'Recipe',
-#      commentable_id: 201,
-#      parent_id: 853,
-#      body: 'His feet don’t get blisters, but his shoes do'
-#    },
-#    {
-#      # <Comment:0x000055e34e0b8c90
-#      id: 855,
-#      user_id: 19,
-#      commentable_type: 'Recipe',
-#      commentable_id: 201,
-#      parent_id: 854,
-#      body: 'When a tree falls in a forest and no one is there, he hears it'
-#    }]
-# ]

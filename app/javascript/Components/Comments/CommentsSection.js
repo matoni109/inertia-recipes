@@ -8,6 +8,7 @@ import FavoritedRecipe from "~/Components/FavoriteRecipe";
 import AddComment from "~/Components/Comments/AddComment";
 import Comment from "~/Components/Comments/Comment";
 import MyComment from "~/Components/Comments/MyComment";
+// https://www.digitalocean.com/community/conceptual_articles/react-loading-components-dynamically-hooks
 
 const CommentsSection = (props) => {
   console.log(props);
