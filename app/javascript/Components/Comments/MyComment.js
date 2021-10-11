@@ -12,9 +12,10 @@ const MyComment = ({
   user_name,
   post_id,
 }) => {
+  // console.log(comment);
   const childComments = () =>
-    allComments.filter((c) => c.parent_id === comment.id);
-
+    allComments.filter((c) => c.comment.parent_id === comment.id);
+  console.log(childComments());
   return (
     <Comment
       key={comment.id}
@@ -26,12 +27,12 @@ const MyComment = ({
       <div className="replies ml-3 mr-2 sm:ml-9 md:mr-3">
         {childComments().map((c) => (
           <MyComment
-            key={c.id}
-            comment={c}
+            key={c.comment.id}
+            comment={c.comment}
             allComments={allComments}
             user_id={user_id}
             post_id={post_id}
-            parent_id={c.id}
+            parent_id={c.comment.id}
           />
         ))}
       </div>

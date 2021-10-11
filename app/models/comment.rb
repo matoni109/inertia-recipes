@@ -8,6 +8,9 @@ class Comment < ApplicationRecord
   ## validations :
   validates :body, length: { minimum: 2, too_short: '%{count} characters is the minimum allowed' }
 
+  ## scope
+  scope :comment_user, -> { comments_user_hash }
+
   def comments
     Comment.where(commentable: commentable, parent_id: id)
   end
@@ -20,6 +23,13 @@ class Comment < ApplicationRecord
     user.nil?
   end
 
+  def comments_hash
+    {
+      user: user,
+      avatar_key: user.avatar.key,
+      comment: self
+    }
+  end
   # Alternatively, we could move all the children to point to our parent instead
 
   # def child_comments

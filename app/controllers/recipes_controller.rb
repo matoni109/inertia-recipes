@@ -24,10 +24,10 @@ class RecipesController < ApplicationController
       recipe: Recipe.find(params[:id]),
       recipe_owner: Recipe.find(params[:id]).user,
       recipe_owner_avatar: Recipe.find(params[:id]).user.avatar_blob,
-      allComments: render_comments,
-      comments_users: User.where(id: render_comments.map(&:user_id)).map do |user|
-                        [user] | [user.avatar.key]
-                      end
+      allComments: render_comments
+      # comments_users: User.where(id: render_comments.map(&:user_id)).map do |user|
+      #                   [user] | [user.avatar.key]
+      #                 end
 
     }
   end
@@ -82,6 +82,7 @@ class RecipesController < ApplicationController
   def render_comments
     @recipe = current_user.recipes.find(params[:id])
     @comments = @recipe.comments ## all of them
+    @comments.map(&:comments_hash)
   end
 
   def comments_for(parent_id, comments)

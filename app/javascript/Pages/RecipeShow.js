@@ -101,14 +101,14 @@ const Recipe = (props) => {
                     <div>
                       <button
                         onClick={deleteHandler}
-                        className="h-10 mr-3 px-5 text-indigo-700 transition-colors duration-150 border border-indigo-500 rounded-lg focus:shadow-outline hover:bg-indigo-500 hover:text-indigo-100"
+                        className="h-10 mb-3 mr-3 px-5 text-indigo-700 transition-colors duration-150 border border-indigo-500 rounded-lg focus:shadow-outline hover:bg-indigo-500 hover:text-indigo-100"
                       >
                         Delete
                       </button>
                     </div>
                     <div>
                       <InertiaLink
-                        className="h-10 mr-3 px-5 text-indigo-700 transition-colors duration-150 border border-indigo-500 rounded-lg focus:shadow-outline hover:bg-indigo-500 hover:text-indigo-100"
+                        className="h-10 mb-3 mr-3 px-5 text-indigo-700 transition-colors duration-150 border border-indigo-500 rounded-lg focus:shadow-outline hover:bg-indigo-500 hover:text-indigo-100"
                         preserveScroll
                         href={
                           favState ? `/favorites/${recipe.id}` : "/favorites"
@@ -128,7 +128,7 @@ const Recipe = (props) => {
                     <div>
                       <button
                         onClick={commentHandler}
-                        className="h-10 mr-3 px-5 text-indigo-700 transition-colors duration-150 border border-indigo-500 rounded-lg focus:shadow-outline hover:bg-indigo-500 hover:text-indigo-100"
+                        className="h-10 mb-3 mr-3 px-5 text-indigo-700 transition-colors duration-150 border border-indigo-500 rounded-lg focus:shadow-outline hover:bg-indigo-500 hover:text-indigo-100"
                       >
                         {commentState ? "Comments Show" : "Comments Off"}
                       </button>
@@ -147,7 +147,7 @@ const Recipe = (props) => {
         </div>
       </section>
       {/* <--- Put comment seciont here --->  */}
-      <CommentsSection key={"qerty"} props={props} />
+      {commentState && <CommentsSection key={"qerty"} props={props} />}
       {/* <Comment props={props} /> */}
       {/* <AddComment props={props} /> */}
       {/* <--- Put comment seciont here --->  */}

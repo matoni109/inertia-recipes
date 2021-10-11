@@ -23,7 +23,7 @@ const CommentsSection = (props) => {
   const { errors } = usePage().props;
 
   const getParentNodes = (allComments) => {
-    const parentNodes = allComments.filter((c) => c.parent_id === null);
+    const parentNodes = allComments.filter((c) => c.comment.parent_id === null);
     return parentNodes;
   };
 
@@ -36,13 +36,13 @@ const CommentsSection = (props) => {
         <div key={index} className="hover:bg-gray-100 m-1 p-2 pt-2">
           <MyComment
             key={index}
-            comment={c}
+            comment={c.comment}
             allComments={allComments}
             createComment={"createComment"}
             user_id={user.id}
             user_name={user.name}
             post_id={recipe.id}
-            parent_id={c.id}
+            parent_id={c.comment.id}
           />
         </div>
       ))}
