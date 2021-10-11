@@ -26,7 +26,7 @@ class Comment < ApplicationRecord
   def comments_hash
     {
       user: user,
-      avatar_key: user.avatar.key,
+      avatar: user.avatar_blob,
       comment: self
     }
   end

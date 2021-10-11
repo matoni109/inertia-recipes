@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { useForm, InertiaLink, usePage } from "@inertiajs/inertia-react";
+import AvatarCloudinary from "~/Components/AvatarCloudinary";
 
 const Comment = (props) => {
   const { url } = usePage();
-  // const {
-  //   data: { user, avatar },
-  //   recipe,
-  // } = props;
   console.log(props);
+  const { user, avatar, id, content, parent_id, children } = props;
+
   return (
     <>
       <div
@@ -15,33 +14,36 @@ const Comment = (props) => {
         id="forum_post_20273"
       >
         <div className="hidden lg:block lg:mr-3 flex-shrink-0">
-          <a href="/users/15712">
-            <img
+          <InertiaLink href="/users/15712">
+            <div className="h-12 w-12">
+              <AvatarCloudinary userData={avatar} />
+            </div>
+            {/* <img
               data-src="http://localhost:3000/public/images/default.jpeg"
               className="rounded-full"
               alt="Gerard Donnelly"
               src="http://localhost:3000/public/images/default.jpeg"
               width="36"
               height="36"
-            />
-          </a>
+            /> */}
+          </InertiaLink>
         </div>
         <div className="min-w-0 flex-grow">
           <div className="">
             <div className="h6 my-0 flex justify-between mb-2">
               <div>
-                <a
+                <InertiaLink
                   className="text-indigo-600 font-semibold hover:text-indigo-500"
                   href="/users/15712"
                 >
-                  {props.user_name}
+                  {user.name}
                   <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium leading-4 bg-gray-100 text-gray-800">
                     1,830 XP
                   </span>
-                </a>
+                </InertiaLink>
                 <small className="text-gray-800">
                   ·
-                  <a
+                  <InertiaLink
                     className="hover:underline"
                     href="https://gorails.com/forum/deploying-tailwind-to-aws-elastic-beanstalk#forum_post_20273"
                   >
@@ -53,14 +55,14 @@ const Comment = (props) => {
                     >
                       Saturday at 4:03am
                     </time>
-                  </a>
+                  </InertiaLink>
                 </small>
               </div>
             </div>
             <div className="mb-2 prose">
-              <p>My Comment id is {props.id}</p>
-              <p>My Parent is {props.parent_id}</p>
-              <p>{props.content}</p>
+              <p>My Comment id is {id}</p>
+              <p>My Parent is {parent_id ? parent_id : "me"}</p>
+              <p>{content}</p>
             </div>
           </div>
           <div className="replies"></div>
@@ -75,7 +77,7 @@ const Comment = (props) => {
           </div>
         </div>
       </div>
-      {props.children}
+      {children}
     </>
   );
 };
