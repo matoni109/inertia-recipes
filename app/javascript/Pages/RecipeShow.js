@@ -147,7 +147,7 @@ const Recipe = (props) => {
         </div>
       </section>
       {/* <--- Put comment seciont here --->  */}
-      <CommentsSection props={props} />
+      <CommentsSection key={"qerty"} props={props} />
       {/* <Comment props={props} /> */}
       {/* <AddComment props={props} /> */}
       {/* <--- Put comment seciont here --->  */}
